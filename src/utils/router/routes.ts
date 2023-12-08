@@ -1,8 +1,8 @@
 export enum NavRoutes {
   mainPagePath = "/",
   authPath = "/auth",
-  loginPagePath = "signin",
-  registrationPagePath = "signup",
+  loginPagePath = "/auth/signin",
+  registrationPagePath = "/auth/signup",
   graphiQL = "/graphiQL",
   notFoundPagePath = "*",
 }

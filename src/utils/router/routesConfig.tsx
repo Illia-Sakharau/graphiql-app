@@ -7,17 +7,18 @@ import { NotFoundPage } from "../../pages/NotFoundPage";
 import { RegistrationPage } from "../../pages/RegistrationPage";
 import RootLayout from "../../components/RoorLayout";
 import { NavRoutes } from "./routes";
+import { ErrorPage } from "../../pages/ErrorPage";
 
 export const routesConfig = createBrowserRouter([
   {
     path: NavRoutes.mainPagePath,
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <MainPage />,
       },
-
       {
         path: NavRoutes.authPath,
         element: <Auth />,
