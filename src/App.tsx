@@ -1,12 +1,15 @@
-import "./App.css";
-import React from "react";
 import { RouterProvider } from "react-router";
+
+import "./App.css";
+import { LocalizationProvider } from "./localization/LocalizationProvider";
 import { routesConfig } from "./utils/router/routesConfig";
 
 function App() {
   return (
-    <RouterProvider router={routesConfig} />
-  )
+    <LocalizationProvider>
+      <RouterProvider router={routesConfig} />
+    </LocalizationProvider>
+  );
 }
 
 export default App;
