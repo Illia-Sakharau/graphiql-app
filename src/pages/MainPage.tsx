@@ -1,5 +1,5 @@
 export const MainPage = () => (
   <div>
-    <h1>Main Page</h1>
+    <h2>Main Page</h2>
   </div>
 );

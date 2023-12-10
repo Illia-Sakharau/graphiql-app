@@ -1,5 +1,5 @@
 export const RegistrationPage = () => (
   <div>
-    <h1>Registration Page</h1>
+    <h2>Registration Page</h2>
   </div>
 );
