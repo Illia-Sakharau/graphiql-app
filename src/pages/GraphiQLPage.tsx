@@ -1,5 +1,5 @@
 export const GraphiQLPage = () => (
   <div>
-    <h1>GraphiQL Page</h1>
+    <h2>GraphiQL Page</h2>
   </div>
 );
