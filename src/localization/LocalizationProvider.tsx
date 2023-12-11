@@ -14,6 +14,7 @@ export const LocalizationProvider: React.FC<{ children: ReactNode }> = ({
   const changeLanguage = () => {
     const changedLanguage = language === "en" ? "ru" : "en";
     setLanguage(changedLanguage);
+    return changedLanguage;
   };
 
   return (
