@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import classes from './style.module.scss';
-import { FC, ReactElement } from 'react';
-import { linkInfo } from '../../../types/components';
+import { NavLink } from "react-router-dom";
+import classes from "./style.module.scss";
+import { FC, ReactElement } from "react";
+import { linkInfo } from "../../../types/components";
 
 type Props = {
   linksInBar: linkInfo[];
@@ -10,7 +10,7 @@ type Props = {
 
 const NavBar: FC<Props> = (props): ReactElement => {
   const className = props.className
-    ? classes.navBar + ' ' + props.className
+    ? classes.navBar + " " + props.className
     : classes.navBar;
 
   return (
@@ -18,7 +18,7 @@ const NavBar: FC<Props> = (props): ReactElement => {
       {props.linksInBar.map((linkInfo) => (
         <NavLink
           to={linkInfo.to}
-          className={({ isActive }) => (isActive ? classes.active : '')}
+          className={({ isActive }) => (isActive ? classes.active : "")}
           key={linkInfo.text}
         >
           {linkInfo.text}

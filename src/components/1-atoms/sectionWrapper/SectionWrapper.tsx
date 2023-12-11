@@ -1,5 +1,5 @@
-import classes from './style.module.scss';
-import { FC, ReactElement } from 'react';
+import classes from "./style.module.scss";
+import { FC, ReactElement } from "react";
 
 type Props = {
   className?: string;
@@ -8,7 +8,7 @@ type Props = {
 
 const SectionWrapper: FC<Props> = (props): ReactElement => {
   const className = props.className
-    ? classes.sectionWrapper + ' ' + props.className
+    ? classes.sectionWrapper + " " + props.className
     : classes.sectionWrapper;
 
   return (
