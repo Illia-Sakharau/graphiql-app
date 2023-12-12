@@ -10,7 +10,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (user) navigate(NavRoutes.graphiQL);
-  }, [navigate, user]);
+  }, [user]);
 
   return (
     <>
