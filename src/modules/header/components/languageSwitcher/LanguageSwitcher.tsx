@@ -1,6 +1,7 @@
+import { FC, ReactElement } from "react";
+
 import { useChangeLanguage } from "../../../../utils/hooks/useChangeLanguage";
 import classes from "./style.module.scss";
-import { FC, ReactElement, useState } from "react";
 
 const LANGUAGES = ["en", "ru"];
 
@@ -13,20 +14,15 @@ const LanguageSwitcher: FC<Props> = (props): ReactElement => {
     ? classes.wrapper + " " + props.className
     : classes.wrapper;
 
-  const setLanguage = useChangeLanguage();
-  const [currentLang, setCurrentLang] = useState<"en" | "ru">("en");
-
-  const handleSwitch = () => {
-    setCurrentLang(setLanguage());
-  };
+  const { setLanguage, language } = useChangeLanguage();
 
   return (
-    <div className={className} onClick={handleSwitch}>
+    <div className={className} onClick={setLanguage}>
       {LANGUAGES.map((lang, i) => (
         <div
           key={lang}
           className={`${classes.lang} ${
-            lang === currentLang ? classes.active : ""
+            lang === language ? classes.active : ""
           }`}
         >
           {lang}
