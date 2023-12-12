@@ -8,12 +8,12 @@ export const GraphiQLPage = () => {
   const isLogged = useAppSelector((state) => state.user.isLogged);
 
   useEffect(() => {
-    if (!isLogged) navigate(NavRoutes.loginPagePath);
+    if (!isLogged) navigate(NavRoutes.mainPagePath);
   }, [isLogged, navigate]);
 
   return (
     <div>
-      <h1>GraphiQL Page</h1>
+      <h2>GraphiQL Page</h2>
     </div>
   );
 };

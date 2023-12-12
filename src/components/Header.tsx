@@ -4,7 +4,7 @@ import { logout } from "./forms/firebase/firebase";
 
 export const Header = () => (
   <div>
-    <h1>Header</h1>
+    <h2>Header</h2>
     <div>
       <Link to={NavRoutes.loginPagePath}>Login</Link>
     </div>
