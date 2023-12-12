@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { NavRoutes } from "../utils/router/routes";
-import { useAppSelector } from "../hooks/redux-hooks";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../components/forms/firebase/firebase";
 
 export const GraphiQLPage = () => {
   const navigate = useNavigate();
-  const isLogged = useAppSelector((state) => state.user.isLogged);
-
+  const [user] = useAuthState(auth);
   useEffect(() => {
-    if (!isLogged) navigate(NavRoutes.mainPagePath);
-  }, [isLogged, navigate]);
+    if (!user) navigate(NavRoutes.mainPagePath);
+  }, [user, navigate]);
 
   return (
     <div>

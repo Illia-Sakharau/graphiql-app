@@ -1,15 +1,16 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../hooks/redux-hooks";
 import { useEffect } from "react";
 import { NavRoutes } from "../utils/router/routes";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../components/forms/firebase/firebase";
 
 const Auth = () => {
   const navigate = useNavigate();
-  const isLogged = useAppSelector((state) => state.user.isLogged);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
-    if (isLogged) navigate(NavRoutes.graphiQL);
-  }, [navigate, isLogged]);
+    if (user) navigate(NavRoutes.graphiQL);
+  }, [navigate, user]);
 
   return (
     <>

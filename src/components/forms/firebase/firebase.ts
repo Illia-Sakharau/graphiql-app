@@ -9,8 +9,6 @@ import {
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { showToastMessage } from "../util/showToastMessage";
 import { AuthMessages } from "../util/authMessages";
-import { store } from "../../../store/store";
-import { setUser } from "../../../store/slices/userSlice";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -28,8 +26,6 @@ const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    store.dispatch(setUser({ isLogged: true }));
-    console.log("Пользователь вошел в систему:", user);
     const idTokenResult = await user.getIdTokenResult();
     const tokenExpirationTime = new Date(
       idTokenResult.expirationTime,
@@ -40,7 +36,6 @@ onAuthStateChanged(auth, async (user) => {
     }
   } else {
     console.log("Пользователь вышел из системы");
-    store.dispatch(setUser({ isLogged: false }));
   }
 });
 
