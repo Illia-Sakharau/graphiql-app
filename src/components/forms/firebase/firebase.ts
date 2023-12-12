@@ -31,10 +31,12 @@ onAuthStateChanged(auth, async (user) => {
     store.dispatch(setUser({ isLogged: true }));
     console.log("Пользователь вошел в систему:", user);
     const idTokenResult = await user.getIdTokenResult();
-    const tokenExpirationTime = new Date(idTokenResult.expirationTime).getTime();
+    const tokenExpirationTime = new Date(
+      idTokenResult.expirationTime,
+    ).getTime();
     const currentTime = Date.now();
     if (tokenExpirationTime < currentTime) {
-      signOut(auth)
+      signOut(auth);
     }
   } else {
     console.log("Пользователь вышел из системы");

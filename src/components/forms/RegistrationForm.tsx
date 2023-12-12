@@ -4,7 +4,6 @@ import { validationSchemaRegistration } from "./util/validationSchema";
 import CustomInput from "./input/CustomInput";
 import { registerWithEmailAndPassword } from "./firebase/firebase";
 
-
 export interface RegistrationType {
   name: string;
   email: string;

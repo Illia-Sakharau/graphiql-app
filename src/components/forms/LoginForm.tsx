@@ -4,7 +4,6 @@ import CustomInput from "./input/CustomInput";
 import { validationSchemaLogin } from "./util/validationSchema";
 import { logInWithEmailAndPassword } from "./firebase/firebase";
 
-
 export interface LoginType {
   email: string;
   password: string;

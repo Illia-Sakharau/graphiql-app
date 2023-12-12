@@ -5,7 +5,7 @@ import { NavRoutes } from "../utils/router/routes";
 
 const Auth = () => {
   const navigate = useNavigate();
-  const isLogged = useAppSelector((state) => state.user.isLogged)
+  const isLogged = useAppSelector((state) => state.user.isLogged);
 
   useEffect(() => {
     if (isLogged) navigate(NavRoutes.graphiQL);
