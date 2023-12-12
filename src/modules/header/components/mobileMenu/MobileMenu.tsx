@@ -1,10 +1,10 @@
 import classes from "./style.module.scss";
 import { FC, ReactElement, useState } from "react";
-import { linkInfo } from "../../../types/components";
-import NavBar from "../../2-molecules/navBar/NavBar";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
-import Button from "../../1-atoms/button/Button";
-import MenuIcon from "../../../assets/icons/menu.svg?react";
+import { linkInfo } from "../../../../types/components";
+import NavBar from "../../../../components/navBar/NavBar";
+import { useLocalization } from "../../../../utils/hooks/useLocalization";
+import Button from "../../../../UI/button/Button";
+import MenuIcon from "../../../../assets/icons/menu.svg?react";
 
 type Props = {
   authorizedUserNav: linkInfo[];

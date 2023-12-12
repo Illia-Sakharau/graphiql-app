@@ -1,14 +1,14 @@
 import classes from "./style.module.scss";
 import { FC, ReactElement, useEffect, useState } from "react";
-import { linkInfo } from "../../../types/components";
-import NavBar from "../../2-molecules/navBar/NavBar";
-import { NavRoutes } from "../../../utils/router/routes";
-import Logo from "../../1-atoms/logo/Logo";
-import LanguageSwitcher from "../../2-molecules/languageSwitcher/LanguageSwitcher";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
-import Button from "../../1-atoms/button/Button";
-import ExitIcon from "../../../assets/icons/logout.svg?react";
-import MobileMenu from "../mobileMenu/MobileMenu";
+import { linkInfo } from "../../types/components";
+import NavBar from "../../components/navBar/NavBar";
+import { NavRoutes } from "../../utils/router/routes";
+import Logo from "../../UI/logo/Logo";
+import LanguageSwitcher from "./components/languageSwitcher/LanguageSwitcher";
+import { useLocalization } from "../../utils/hooks/useLocalization";
+import Button from "../../UI/button/Button";
+import ExitIcon from "../../assets/icons/logout.svg?react";
+import MobileMenu from "./components/mobileMenu/MobileMenu";
 
 type Props = unknown;
 

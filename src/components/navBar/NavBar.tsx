@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
-import { linkInfo } from "../../../types/components";
+import { linkInfo } from "../../types/components";
 
 type Props = {
   linksInBar: linkInfo[];

@@ -1,7 +1,7 @@
 import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
-import GithubLogo from "../../../assets/github-logo.svg";
-import { GithubLinkProps } from "../../../types/components";
+import GithubLogo from "../../../../assets/github-logo.svg";
+import { GithubLinkProps } from "../../../../types/components";
 
 const GithubLink: FC<GithubLinkProps> = ({ link, name }): ReactElement => {
   return (

@@ -1,8 +1,8 @@
 import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
-import AppLogo from "../../../assets/logo.svg";
+import AppLogo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
-import { NavRoutes } from "../../../utils/router/routes";
+import { NavRoutes } from "../../utils/router/routes";
 
 type Props = {
   className?: string;

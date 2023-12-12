@@ -1,4 +1,4 @@
-import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
+import { useChangeLanguage } from "../../../../utils/hooks/useChangeLanguage";
 import classes from "./style.module.scss";
 import { FC, ReactElement, useState } from "react";
 

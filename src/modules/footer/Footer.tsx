@@ -1,13 +1,13 @@
-import { GithubLinkProps, linkInfo } from "../../../types/components";
-import { NavRoutes } from "../../../utils/router/routes";
-import GithubLink from "../../1-atoms/githubLink/GithubLink";
-import Logo from "../../1-atoms/logo/Logo";
-import SectionWrapper from "../../1-atoms/sectionWrapper/SectionWrapper";
-import NavBar from "../../2-molecules/navBar/NavBar";
+import { GithubLinkProps, linkInfo } from "../../types/components";
+import { NavRoutes } from "../../utils/router/routes";
+import GithubLink from "./components/githubLink/GithubLink";
+import Logo from "../../UI/logo/Logo";
+import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
+import NavBar from "../../components/navBar/NavBar";
 import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
-import RSSLogo from "../../../assets/rss-logo.svg";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
+import RSSLogo from "../../assets/rss-logo.svg";
+import { useLocalization } from "../../utils/hooks/useLocalization";
 
 const CREATORS: GithubLinkProps[] = [
   {
