@@ -9,6 +9,13 @@
   padding: 0 32px;
   background-color: $color-black;
   z-index: 100;
+  transition: all 1s;
+
+  &_top {
+    transform: scale(1.05);
+    padding: 0 64px;
+    background-color: #000;
+  }
 
   & .lang {
     padding-left: 32px;
@@ -38,7 +45,11 @@
   }
 
   @media (max-width: $max-mobile) {
-    padding: 16px;
+    padding: 0 16px;
+
+    &_top {
+      padding: 0 32px;
+    }
   }
 }
 

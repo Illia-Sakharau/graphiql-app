@@ -1,5 +1,5 @@
 import classes from "./style.module.scss";
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import { linkInfo } from "../../../types/components";
 import NavBar from "../../2-molecules/navBar/NavBar";
 import { NavRoutes } from "../../../utils/router/routes";
@@ -13,6 +13,7 @@ import MobileMenu from "../mobileMenu/MobileMenu";
 type Props = unknown;
 
 const Header: FC<Props> = (): ReactElement => {
+  const [isTop, setIsTop] = useState(true);
   const dictionary = useLocalization();
   const isAuth = true; // заменить на идентификатор юзера от Firebase
 
@@ -46,8 +47,23 @@ const Header: FC<Props> = (): ReactElement => {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentIsTop = window.scrollY === 0;
+      console.log(currentIsTop !== isTop);
+
+      if (currentIsTop !== isTop) {
+        setIsTop(currentIsTop);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isTop]);
+
   return (
-    <header className={classes.header}>
+    <header className={`${classes.header} ${isTop && classes["header_top"]}`}>
       <Logo />
       <LanguageSwitcher className={classes.lang} />
       {isAuth ? (
