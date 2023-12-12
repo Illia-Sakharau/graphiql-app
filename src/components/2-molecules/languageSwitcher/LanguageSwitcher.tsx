@@ -2,7 +2,7 @@ import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
 import classes from "./style.module.scss";
 import { FC, ReactElement, useState } from "react";
 
-const LANGUAGES = [ 'en', 'ru'];
+const LANGUAGES = ["en", "ru"];
 
 type Props = {
   className?: string;
@@ -14,19 +14,29 @@ const LanguageSwitcher: FC<Props> = (props): ReactElement => {
     : classes.wrapper;
 
   const setLanguage = useChangeLanguage();
-  const [currentLang, setCurrentLang] = useState<'en' | 'ru'>('en')
+  const [currentLang, setCurrentLang] = useState<"en" | "ru">("en");
 
   const handleSwitch = () => {
     setCurrentLang(setLanguage());
-  }
-  
+  };
 
   return (
     <div className={className} onClick={handleSwitch}>
-      {LANGUAGES.map((lang, i) => <>
-        <div key={lang} className={`${classes.lang} ${lang===currentLang ? classes.active : ''}`}>{lang}</div>
-        {i!==LANGUAGES.length-1 && <div key={lang} className={classes.devider}>/</div>}
-      </>)}
+      {LANGUAGES.map((lang, i) => (
+        <div
+          key={lang}
+          className={`${classes.lang} ${
+            lang === currentLang ? classes.active : ""
+          }`}
+        >
+          {lang}
+          {i !== LANGUAGES.length - 1 && (
+            <div key={`devider${i}`} className={classes.devider}>
+              /
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

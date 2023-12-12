@@ -1,7 +1,7 @@
 import en from "../localization/en.json";
 
 export type LocalizationContextType = {
-  setLanguage: () => 'en' | 'ru';
+  setLanguage: () => "en" | "ru";
   translation: translationType;
 };
 

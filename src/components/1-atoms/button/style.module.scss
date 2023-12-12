@@ -31,7 +31,7 @@
     cursor: pointer;
     background: $color-primary-80;
   }
-  &:enabled:active {
+  &:enabled:active, &.active {
     background: $color-primary-40;
   }
 }
@@ -48,7 +48,7 @@
       fill: $color-primary-60;
     }
   }
-  &:enabled:active {
+  &:enabled:active, &.active {
     background: $color-primary-95;
   }
 }
@@ -65,7 +65,7 @@
       fill: $color-primary-80;
     }
   }
-  &:enabled:active {
+  &:enabled:active, &.active {
     background: $color-primary-40;
   }
 }

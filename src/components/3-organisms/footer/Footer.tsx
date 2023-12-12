@@ -7,17 +7,7 @@ import NavBar from "../../2-molecules/navBar/NavBar";
 import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
 import RSSLogo from "../../../assets/rss-logo.svg";
-
-const NAVBAR_LINKS: linkInfo[] = [
-  {
-    to: NavRoutes.mainPagePath,
-    text: "Home",
-  },
-  {
-    to: NavRoutes.graphiQL,
-    text: "Playground",
-  },
-];
+import { useLocalization } from "../../../utils/hooks/useLocalization";
 
 const CREATORS: GithubLinkProps[] = [
   {
@@ -37,17 +27,29 @@ const CREATORS: GithubLinkProps[] = [
 type Props = unknown;
 
 const Footer: FC<Props> = (): ReactElement => {
+  const dictionary = useLocalization();
+  const navbarLinks: linkInfo[] = [
+    {
+      to: NavRoutes.mainPagePath,
+      text: dictionary.navigation.home,
+    },
+    {
+      to: NavRoutes.graphiQL,
+      text: dictionary.navigation.playground,
+    },
+  ];
+
   return (
     <footer className={classes.footer}>
       <SectionWrapper className={classes[`footer__wrapper`]}>
         <div className={classes["top-side"]}>
           <Logo />
-          <NavBar linksInBar={NAVBAR_LINKS} className={classes["nav-bar"]} />
+          <NavBar linksInBar={navbarLinks} className={classes["nav-bar"]} />
         </div>
 
         <div className={classes["bottom-side"]}>
           <div className={classes.creators}>
-            Created by
+            {dictionary["created-by"]}
             <div className={classes["creators__inner"]}>
               {CREATORS.map((prop) => (
                 <GithubLink key={prop.name} {...prop} />

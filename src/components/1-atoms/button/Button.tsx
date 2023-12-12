@@ -10,6 +10,7 @@ type Props = {
   btnStyle: "onWhite" | "onBlack" | "primary";
   btnType: "round" | "rectangle";
   children: React.ReactNode;
+  active?: boolean;
   className?: string;
 } & DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -20,12 +21,17 @@ const Button: FC<Props> = ({
   btnType,
   btnStyle,
   children,
+  active,
   className,
   ...props
 }): ReactElement => {
   const finalClassName = className
-    ? `${classes.button} ${classes[btnType]} ${classes[btnStyle]} ${className}`
-    : `${classes.button} ${classes[btnType]} ${classes[btnStyle]}`;
+    ? `${classes.button} ${classes[btnType]} ${
+        classes[btnStyle]
+      } ${className} ${active && classes.active}`
+    : `${classes.button} ${classes[btnType]} ${classes[btnStyle]} ${
+        active && classes.active
+      }`;
 
   return (
     <button className={finalClassName} {...props}>
