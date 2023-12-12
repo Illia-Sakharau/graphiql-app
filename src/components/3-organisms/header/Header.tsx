@@ -19,7 +19,6 @@ const Header: FC<Props> = (): ReactElement => {
 
   const handleLogout = () => {
     // вставить логаут акшен
-    console.log("Logout");
   };
 
   const authorizedUserNav: linkInfo[] = [
@@ -50,8 +49,6 @@ const Header: FC<Props> = (): ReactElement => {
   useEffect(() => {
     const handleScroll = () => {
       const currentIsTop = window.scrollY === 0;
-      console.log(currentIsTop !== isTop);
-
       if (currentIsTop !== isTop) {
         setIsTop(currentIsTop);
       }
