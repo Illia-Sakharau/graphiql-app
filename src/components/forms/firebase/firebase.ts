@@ -6,11 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { showToastMessage } from "../util/showToastMessage";
 import { AuthMessages } from "../util/authMessages";
 import { store } from "../../../store/store";
@@ -30,27 +26,36 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
     store.dispatch(setUser({ isLogged: true }));
     console.log("Пользователь вошел в систему:", user);
+    const idTokenResult = await user.getIdTokenResult();
+    const tokenExpirationTime = new Date(idTokenResult.expirationTime).getTime();
+    const currentTime = Date.now();
+    if (tokenExpirationTime < currentTime) {
+      signOut(auth)
+    }
   } else {
-    store.dispatch(setUser({ isLogged: false }));
     console.log("Пользователь вышел из системы");
+    store.dispatch(setUser({ isLogged: false }));
   }
-})
+});
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    showToastMessage(AuthMessages.successLoginMessage, 'green');
-
+    showToastMessage(AuthMessages.successLoginMessage, "green");
   } catch (err) {
-    showToastMessage(AuthMessages.failedLoginMessage, 'red');
+    showToastMessage(AuthMessages.failedLoginMessage, "red");
   }
 };
 
-const registerWithEmailAndPassword = async (name: string, email: string, password: string) => {
+const registerWithEmailAndPassword = async (
+  name: string,
+  email: string,
+  password: string,
+) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -60,12 +65,15 @@ const registerWithEmailAndPassword = async (name: string, email: string, passwor
       authProvider: "local",
       email,
     });
-    showToastMessage(AuthMessages.successRegistrationMessage, 'green');
+    showToastMessage(AuthMessages.successRegistrationMessage, "green");
   } catch (error) {
-    if (error instanceof FirebaseError && error.code === 'auth/email-already-in-use') {
-      showToastMessage(AuthMessages.existingUserError, 'red');
+    if (
+      error instanceof FirebaseError &&
+      error.code === "auth/email-already-in-use"
+    ) {
+      showToastMessage(AuthMessages.existingUserError, "red");
     } else {
-      showToastMessage(AuthMessages.otherErrorMessage, 'red');
+      showToastMessage(AuthMessages.otherErrorMessage, "red");
     }
   }
 };

@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
-import { logout } from "../components/forms/firebase/firebase";
-import { NavRoutes } from "../utils/router/routes";
 
-export const GraphiQLPage = () => (
-  <div>
-    <h1>GraphiQL Page</h1>
-    <Link to={NavRoutes.mainPagePath}>mainPagePath</Link>
-    <button onClick={logout}>Выйти</button>
-  </div>
-);
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { NavRoutes } from "../utils/router/routes";
+import { useAppSelector } from "../hooks/redux-hooks";
+
+export const GraphiQLPage = () => {
+  const navigate = useNavigate();
+  const isLogged = useAppSelector((state) => state.user.isLogged)
+
+  useEffect(() => {
+    if (!isLogged) navigate(NavRoutes.loginPagePath);
+  }, [isLogged, navigate]);
+
+  return (
+    <div>
+      <h1>GraphiQL Page</h1>
+    </div>
+  )
+}
+
+

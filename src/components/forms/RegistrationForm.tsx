@@ -2,12 +2,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchemaRegistration } from "./util/validationSchema";
 import CustomInput from "./input/CustomInput";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, registerWithEmailAndPassword } from "./firebase/firebase";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { NavRoutes } from "../../utils/router/routes";
-
+import { registerWithEmailAndPassword } from "./firebase/firebase";
 
 
 export interface RegistrationType {
@@ -18,21 +13,13 @@ export interface RegistrationType {
 }
 
 const Registration = () => {
-  const navigate = useNavigate();
-  const [user] = useAuthState(auth);
   const formMethods = useForm({
     mode: "onChange",
     resolver: yupResolver(validationSchemaRegistration),
   });
-  useEffect(() => {
-    if (user) navigate(NavRoutes.graphiQL);;
-  }, [navigate, user]);
-
   const onSubmit = (data: RegistrationType) => {
-    console.log(auth)
-    registerWithEmailAndPassword(data.name, data.email, data.password)
-  }
-
+    registerWithEmailAndPassword(data.name, data.email, data.password);
+  };
   return (
     <>
       <h2>Registration</h2>
