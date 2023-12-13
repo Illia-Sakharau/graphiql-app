@@ -9,14 +9,17 @@ import { useLocalization } from "../../utils/hooks/useLocalization";
 import Button from "../../UI/button/Button";
 import ExitIcon from "../../assets/icons/logout.svg?react";
 import MobileMenu from "./components/mobileMenu/MobileMenu";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, logout } from "../../components/forms/firebase/firebase";
 
 const Header: FC = (): ReactElement => {
   const [isTop, setIsTop] = useState(true);
   const dictionary = useLocalization();
-  const isAuth = true; // заменить на идентификатор юзера от Firebase
-
+  const [user] = useAuthState(auth);
+  const isAuth = !!user;
+  
   const handleLogout = () => {
-    // вставить логаут акшен
+    logout();
   };
 
   const authorizedUserNav: linkInfo[] = [
