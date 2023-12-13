@@ -34,8 +34,6 @@ onAuthStateChanged(auth, async (user) => {
     if (tokenExpirationTime < currentTime) {
       signOut(auth);
     }
-  } else {
-    console.log("Пользователь вышел из системы");
   }
 });
 
