@@ -24,9 +24,7 @@ const CREATORS: GithubLinkProps[] = [
   },
 ];
 
-type Props = unknown;
-
-const Footer: FC<Props> = (): ReactElement => {
+const Footer: FC = (): ReactElement => {
   const dictionary = useLocalization();
   const navbarLinks: linkInfo[] = [
     {

@@ -10,9 +10,7 @@ import Button from "../../UI/button/Button";
 import ExitIcon from "../../assets/icons/logout.svg?react";
 import MobileMenu from "./components/mobileMenu/MobileMenu";
 
-type Props = unknown;
-
-const Header: FC<Props> = (): ReactElement => {
+const Header: FC = (): ReactElement => {
   const [isTop, setIsTop] = useState(true);
   const dictionary = useLocalization();
   const isAuth = true; // заменить на идентификатор юзера от Firebase
