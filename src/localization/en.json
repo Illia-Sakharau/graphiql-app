@@ -1,4 +1,13 @@
 {
   "name": "name",
-  "password": "password"
+  "password": "password",
+  
+  "navigation": {
+    "home": "Home",
+    "playground": "Playground",
+    "login": "Login",
+    "registration": "Registration",
+    "logout": "LogOut"
+  },
+  "created-by": "Created by" 
 }

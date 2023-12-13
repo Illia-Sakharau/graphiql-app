@@ -1,4 +1,13 @@
 {
   "name": "имя",
-  "password": "пароль"
+  "password": "пароль",
+  
+  "navigation": {
+    "home": "Главная",
+    "playground": "Песочница",
+    "login": "Вход",
+    "registration": "Регистрация",
+    "logout": "Выйти"
+  },
+  "created-by": "Разработали" 
 }

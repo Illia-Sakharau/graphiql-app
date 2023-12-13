@@ -1,5 +1,4 @@
 import { RouterProvider } from "react-router";
-//import "./App.css";
 import { LocalizationProvider } from "./localization/LocalizationProvider";
 import { routesConfig } from "./utils/router/routesConfig";
 

@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Auth from "../../components/Auth";
+import Auth from "../../pages/Auth";
 import { GraphiQLPage } from "../../pages/GraphiQLPage";
 import { LoginPage } from "../../pages/LoginPage";
 import { MainPage } from "../../pages/MainPage";
 import { NotFoundPage } from "../../pages/NotFoundPage";
 import { RegistrationPage } from "../../pages/RegistrationPage";
-import RootLayout from "../../components/RoorLayout";
+import RootLayout from "../../pages/RoorLayout";
 import { NavRoutes } from "./routes";
 import { ErrorPage } from "../../pages/ErrorPage";
 
