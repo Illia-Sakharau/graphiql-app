@@ -1,7 +1,6 @@
 {
   "name": "name",
   "password": "password",
-  
   "navigation": {
     "home": "Home",
     "playground": "Playground",
@@ -9,5 +8,9 @@
     "registration": "Registration",
     "logout": "LogOut"
   },
-  "created-by": "Created by" 
+  "created-by": "Created by",
+  "not_found_page": {
+    "title": "Page Not Found",
+    "btn_home": "Home Page"
+  }
 }
