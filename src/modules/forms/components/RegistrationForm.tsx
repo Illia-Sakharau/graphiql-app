@@ -1,28 +1,47 @@
-import { useForm, FormProvider } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchemaRegistration } from "../util/validationSchema";
-import CustomInput from "./input/CustomInput";
-import { registerWithEmailAndPassword } from "../../../api/firebase";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
-import classes from "./form.module.scss";
-import Button from "../../../UI/button/Button";
+import { useEffect } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
-export interface RegistrationType {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { registerWithEmailAndPassword } from "../../../api/firebase";
+import { RegistrationType } from "../../../types/forms";
+import Button from "../../../UI/button/Button";
+import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
+import { useLocalization } from "../../../utils/hooks/useLocalization";
+import { validationSchemaRegistration } from "../util/validationSchema";
+import classes from "./form.module.scss";
+import CustomInput from "./input/CustomInput";
+
+type controlsType = "email" | "password" | "name" | "confirmPassword";
 
 const Registration = () => {
   const dictionary = useLocalization();
+  const { language } = useChangeLanguage();
+
+  const validationSchema = validationSchemaRegistration(dictionary.validation);
+
   const formMethods = useForm({
     mode: "onChange",
-    resolver: yupResolver(validationSchemaRegistration),
+    resolver: yupResolver(validationSchema),
   });
-  const onSubmit = (data: RegistrationType) => {
-    registerWithEmailAndPassword(data.name, data.email, data.password);
+
+  const { formState } = formMethods;
+
+  useEffect(() => {
+    const keys = Object.keys(formState.dirtyFields);
+    keys.forEach((key) => {
+      const controlName = key as controlsType;
+      formMethods.trigger(controlName);
+    });
+  }, [language]);
+
+  const onSubmit = ({ name, email, password }: RegistrationType) => {
+    registerWithEmailAndPassword(
+      { name, email, password },
+      dictionary.auth_messages,
+    );
   };
+
   return (
     <div className={classes.wrapForm}>
       <h4 className={classes.title}>{dictionary.navigation.registration}</h4>
@@ -47,7 +66,7 @@ const Registration = () => {
             type={"password"}
           />
           <CustomInput
-            label={dictionary.forms.confirmPassword}
+            label={dictionary.forms.confirm_password}
             name="confirmPassword"
             type={"password"}
           />

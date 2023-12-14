@@ -1,25 +1,41 @@
-import { useForm, FormProvider } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import CustomInput from "./input/CustomInput";
-import { validationSchemaLogin } from "../util/validationSchema";
-import { logInWithEmailAndPassword } from "../../../api/firebase";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
-import Button from "../../../UI/button/Button";
-import classes from "./form.module.scss";
+import { useEffect } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
-export interface LoginType {
-  email: string;
-  password: string;
-}
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { logInWithEmailAndPassword } from "../../../api/firebase";
+import { LoginType } from "../../../types/forms";
+import Button from "../../../UI/button/Button";
+import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
+import { useLocalization } from "../../../utils/hooks/useLocalization";
+import { validationSchemaLogin } from "../util/validationSchema";
+import classes from "./form.module.scss";
+import CustomInput from "./input/CustomInput";
+
+type controlsType = "email" | "password";
 
 const Login = () => {
   const dictionary = useLocalization();
+  const { language } = useChangeLanguage();
+  const validationSchema = validationSchemaLogin(dictionary.validation);
+
   const formMethods = useForm({
     mode: "onChange",
-    resolver: yupResolver(validationSchemaLogin),
+    resolver: yupResolver(validationSchema),
   });
+
+  const { formState } = formMethods;
+
+  useEffect(() => {
+    const keys = Object.keys(formState.dirtyFields);
+    keys.forEach((key) => {
+      const controlName = key as controlsType;
+      formMethods.trigger(controlName);
+    });
+  }, [language]);
+
   const onSubmit = (data: LoginType) => {
-    logInWithEmailAndPassword(data.email, data.password);
+    logInWithEmailAndPassword(data, dictionary.auth_messages);
   };
 
   return (

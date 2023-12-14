@@ -1,14 +1,16 @@
 import { FirebaseError, initializeApp } from "firebase/app";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
+  getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+
 import { showToastMessage } from "../modules/forms/util/showToastMessage";
-import { AuthMessages } from "../modules/forms/util/authMessages";
+import { LoginType, RegistrationType } from "../types/forms";
+import { authMessagesType } from "../types/localization";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -37,19 +39,21 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-const logInWithEmailAndPassword = async (email: string, password: string) => {
+const logInWithEmailAndPassword = async (
+  { email, password }: LoginType,
+  dictionary: authMessagesType,
+) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    showToastMessage(AuthMessages.successLoginMessage, "green");
+    showToastMessage(dictionary.success_login, "green");
   } catch (err) {
-    showToastMessage(AuthMessages.failedLoginMessage, "red");
+    showToastMessage(dictionary.failed_login, "red");
   }
 };
 
 const registerWithEmailAndPassword = async (
-  name: string,
-  email: string,
-  password: string,
+  { name, email, password }: Omit<RegistrationType, "confirmPassword">,
+  dictionary: authMessagesType,
 ) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -60,15 +64,15 @@ const registerWithEmailAndPassword = async (
       authProvider: "local",
       email,
     });
-    showToastMessage(AuthMessages.successRegistrationMessage, "green");
+    showToastMessage(dictionary.success_registration, "green");
   } catch (error) {
     if (
       error instanceof FirebaseError &&
       error.code === "auth/email-already-in-use"
     ) {
-      showToastMessage(AuthMessages.existingUserError, "red");
+      showToastMessage(dictionary.existing_user_error, "red");
     } else {
-      showToastMessage(AuthMessages.otherErrorMessage, "red");
+      showToastMessage(dictionary.other_error, "red");
     }
   }
 };
