@@ -8,7 +8,7 @@
     "registration": "Регистрация",
     "logout": "Выйти"
   },
-  "created-by": "Разработали",
+  "created_by": "Разработали",
   "not_found_page": {
     "title": "Страница Не Найдена",
     "btn_home": "Главная"

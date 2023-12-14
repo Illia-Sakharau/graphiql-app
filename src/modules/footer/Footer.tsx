@@ -1,13 +1,14 @@
-import { GithubLinkProps, linkInfo } from "../../types/components";
-import { NavRoutes } from "../../utils/router/routes";
-import GithubLink from "./components/githubLink/GithubLink";
-import Logo from "../../UI/logo/Logo";
-import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
-import NavBar from "../../components/navBar/NavBar";
-import classes from "./style.module.scss";
-import { FC, ReactElement } from "react";
-import RSSLogo from "../../assets/rss-logo.svg";
-import { useLocalization } from "../../utils/hooks/useLocalization";
+import { FC, ReactElement } from 'react';
+
+import RSSLogo from '../../assets/rss-logo.svg';
+import NavBar from '../../components/navBar/NavBar';
+import { GithubLinkProps, linkInfo } from '../../types/components';
+import Logo from '../../UI/logo/Logo';
+import SectionWrapper from '../../UI/sectionWrapper/SectionWrapper';
+import { useLocalization } from '../../utils/hooks/useLocalization';
+import { NavRoutes } from '../../utils/router/routes';
+import GithubLink from './components/githubLink/GithubLink';
+import classes from './style.module.scss';
 
 const CREATORS: GithubLinkProps[] = [
   {
@@ -47,7 +48,7 @@ const Footer: FC = (): ReactElement => {
 
         <div className={classes["bottom-side"]}>
           <div className={classes.creators}>
-            {dictionary["created-by"]}
+            {dictionary["created_by"]}
             <div className={classes["creators__inner"]}>
               {CREATORS.map((prop) => (
                 <GithubLink key={prop.name} {...prop} />

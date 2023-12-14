@@ -8,7 +8,7 @@
     "registration": "Registration",
     "logout": "LogOut"
   },
-  "created-by": "Created by",
+  "created_by": "Created by",
   "not_found_page": {
     "title": "Page Not Found",
     "btn_home": "Home Page"
