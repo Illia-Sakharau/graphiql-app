@@ -17,7 +17,7 @@ const Header: FC = (): ReactElement => {
   const dictionary = useLocalization();
   const [user] = useAuthState(auth);
   const isAuth = !!user;
-  
+
   const handleLogout = () => {
     logout();
   };
