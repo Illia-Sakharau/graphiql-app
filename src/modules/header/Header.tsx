@@ -10,7 +10,7 @@ import Button from "../../UI/button/Button";
 import ExitIcon from "../../assets/icons/logout.svg?react";
 import MobileMenu from "./components/mobileMenu/MobileMenu";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, logout } from "../../components/forms/firebase/firebase";
+import { auth, logout } from "../../api/firebase";
 
 const Header: FC = (): ReactElement => {
   const [isTop, setIsTop] = useState(true);

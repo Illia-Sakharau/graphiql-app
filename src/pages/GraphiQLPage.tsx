@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { NavRoutes } from "../utils/router/routes";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../components/forms/firebase/firebase";
+import { auth } from "../api/firebase";
 
 export const GraphiQLPage = () => {
   const navigate = useNavigate();

@@ -1,8 +1,3 @@
-import Login from "../components/forms/LoginForm";
+import Login from "../modules/forms/components/LoginForm";
 
-export const LoginPage = () => (
-  <div>
-    <h2>Login Page</h2>
-    <Login />
-  </div>
-);
+export const LoginPage = () => <Login />;

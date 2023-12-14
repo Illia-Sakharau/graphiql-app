@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import "./components/forms/firebase/firebase";
+import "./api/firebase";
 import App from "./App";
 
 const rootElement = document.getElementById("root") as HTMLElement;

@@ -1,8 +1,3 @@
-import Registration from "../components/forms/RegistrationForm";
+import Registration from "../modules/forms/components/RegistrationForm";
 
-export const RegistrationPage = () => (
-  <div>
-    <h2>Registration Page</h2>
-    <Registration />
-  </div>
-);
+export const RegistrationPage = () => <Registration />;
