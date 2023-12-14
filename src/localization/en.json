@@ -12,5 +12,16 @@
   "not_found_page": {
     "title": "Page Not Found",
     "btn_home": "Home Page"
+  },
+  "forms": {
+    "name": "name",
+    "email": "email",
+    "password": "password",
+    "confirmPassword": "confirm password"
+  },
+  "validation": {
+    "name": {
+      "necessarily": "The 'name' field is required"
+    }
   }
 }

@@ -7,8 +7,8 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { showToastMessage } from "../util/showToastMessage";
-import { AuthMessages } from "../util/authMessages";
+import { showToastMessage } from "../modules/forms/util/showToastMessage";
+import { AuthMessages } from "../modules/forms/util/authMessages";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

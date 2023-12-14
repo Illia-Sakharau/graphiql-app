@@ -1,5 +1,5 @@
-import view from "../../../assets/view.svg";
-import noView from "../../../assets/no-view.svg";
+import view from "../../../../assets/view.svg";
+import noView from "../../../../assets/no-view.svg";
 import styles from "./visibilityIcon.module.scss";
 
 interface VisibilityIconProps {

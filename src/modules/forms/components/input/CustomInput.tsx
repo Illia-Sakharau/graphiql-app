@@ -1,6 +1,7 @@
 import { FieldError, useFormContext } from "react-hook-form";
 import { useState } from "react";
 import { VisibilityIcon } from "../visibility/visibilityIcon";
+import classes from "./customInput.module.scss";
 
 export type CustomInputProps = {
   label: string;
@@ -24,16 +25,24 @@ const CustomInput = ({ label, name, type }: CustomInputProps) => {
   const errorMessage = (hookFormErrors[name] as FieldError)?.message;
 
   return (
-    <div>
-      <label htmlFor={name}>{label}:</label>
-      <input {...register(name)} id={name} type={typeInput} name={name} />
+    <div className={classes.field}>
+      <label className={classes.label} htmlFor={name}>
+        {label}:
+      </label>
+      <input
+        className={`${classes.input} ${errorMessage ? classes.errorInput : ""}`}
+        {...register(name)}
+        id={name}
+        type={typeInput}
+        name={name}
+      />
       {type === "password" && (
         <VisibilityIcon
           handleVisibility={handleVisibility}
           passwordVisibility={passwordVisibility}
         />
       )}
-      <span>{errorMessage}</span>
+      <span className={classes.error}>{errorMessage}</span>
     </div>
   );
 };
