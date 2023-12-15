@@ -8,7 +8,7 @@ export const GraphiQLPage = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
   useEffect(() => {
-    if (!user) navigate(NavRoutes.mainPagePath);
+    if (!user) navigate(NavRoutes.loginPagePath);
   }, [user]);
 
   return (

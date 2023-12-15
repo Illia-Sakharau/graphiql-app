@@ -47,5 +47,9 @@
     "existing_user_error": "There is already an existing customer with the provided email",
     "failed_login": "Invalid email or password, please try again",
     "other_error": "Registration failed, please try again later"
+  },
+  "herro_banner": {
+    "description": "GraphiQL is a playground/IDE for graphQL requests.",
+    "btn-text": "Open Playground"
   }
 }
