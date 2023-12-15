@@ -1,33 +1,39 @@
 import * as Yup from "yup";
 
-export const validationSchemaRegistration = Yup.object().shape({
-  name: Yup.string()
-    .required('Поле "имя" обязательно для заполнения')
-    .matches(/^\p{Lu}/u, "Имя должно начинаться с заглавной буквы"),
-  email: Yup.string()
-    .required('Поле "электронная почта" обязательно для заполнения')
-    .email("Некорректный адрес электронной почты"),
-  password: Yup.string()
-    .required('Поле "пароль" обязательно для заполнения')
-    .min(8, "Должно содержать 8 символов")
-    .matches(/(?=.*\p{Lu})/u, "Должен содержать заглавную букву")
-    .matches(/[a-zа-я]/, "Должен содержать строчную букву")
-    .matches(/[0-9]/, "Должен содержать цифру")
-    .matches(/[!@#$%^&*]/, "Должен содержать один специальный символ"),
-  confirmPassword: Yup.string()
-    .required('Поле "подтверждение пароля" обязательно для заполнения')
-    .oneOf([Yup.ref("password"), ""], "Пароли должны совпадать"),
-});
+import { validationType } from "../../../types/localization";
 
-export const validationSchemaLogin = Yup.object().shape({
-  email: Yup.string()
-    .required('Поле "электронная почта" обязательно для заполнения')
-    .email("Некорректный адрес электронной почты"),
-  password: Yup.string()
-    .required('Поле "пароль" обязательно для заполнения')
-    .min(8, "Должно содержать 8 символов")
-    .matches(/(?=.*\p{Lu})/u, "Должен содержать заглавную букву")
-    .matches(/(?=.*\p{Ll})/u, "Должен содержать строчную букву")
-    .matches(/[0-9]/, "Должен содержать цифру")
-    .matches(/(?=.*[\W_])/, "Должен содержать один специальный символ"),
-});
+export function validationSchemaRegistration(dictionary: validationType) {
+  return Yup.object().shape({
+    name: Yup.string()
+      .required(dictionary.name.necessarily)
+      .matches(/^\p{Lu}/u, dictionary.name.capital_letter),
+    email: Yup.string()
+      .required(dictionary.email.necessarily)
+      .email(dictionary.email.incorrect),
+    password: Yup.string()
+      .required(dictionary.password.necessarily)
+      .min(8, dictionary.password.min)
+      .matches(/(?=.*\p{Lu})/u, dictionary.password.capital_letter)
+      .matches(/[a-zа-я]/, dictionary.password.lowercase_letter)
+      .matches(/[0-9]/, dictionary.password.number)
+      .matches(/[!@#$%^&*]/, dictionary.password.special_character),
+    confirmPassword: Yup.string()
+      .required(dictionary.confirm_password.necessarily)
+      .oneOf([Yup.ref("password"), ""], dictionary.confirm_password.match),
+  });
+}
+
+export function validationSchemaLogin(dictionary: validationType) {
+  return Yup.object().shape({
+    email: Yup.string()
+      .required(dictionary.email.necessarily)
+      .email(dictionary.email.incorrect),
+    password: Yup.string()
+      .required(dictionary.password.necessarily)
+      .min(8, dictionary.password.min)
+      .matches(/(?=.*\p{Lu})/u, dictionary.password.capital_letter)
+      .matches(/(?=.*\p{Ll})/u, dictionary.password.lowercase_letter)
+      .matches(/[0-9]/, dictionary.password.number)
+      .matches(/(?=.*[\W_])/, dictionary.password.special_character),
+  });
+}

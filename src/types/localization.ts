@@ -7,3 +7,7 @@ export type LocalizationContextType = {
 };
 
 export type translationType = typeof en;
+
+export type validationType = typeof en.validation;
+
+export type authMessagesType = typeof en.auth_messages;

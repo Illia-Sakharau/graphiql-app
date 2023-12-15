@@ -17,11 +17,35 @@
     "name": "name",
     "email": "email",
     "password": "password",
-    "confirmPassword": "confirm password"
+    "confirm_password": "confirm password"
   },
   "validation": {
     "name": {
-      "necessarily": "The 'name' field is required"
+      "necessarily": "The 'name' field is required",
+      "capital_letter": "The 'name' should begin with a capital letter"
+    },
+    "email": {
+      "necessarily": "The 'email' field is required",
+      "incorrect": "Incorrect email address"
+    },
+    "password": {
+      "necessarily": "The 'password' field is required",
+      "min": "Should contain 8 characters",
+      "capital_letter": "Should contain a capital letter",
+      "lowercase_letter": "Should contain a lowercase letter",
+      "number": "Should contain a number",
+      "special_character": "Should contain one special character"
+    },
+    "confirm_password": {
+      "necessarily": "The 'password confirmation' field is required",
+      "match": "The passwords must match"
     }
+  },
+  "auth_messages": {
+    "success_registration": "Registration successful",
+    "success_login": "Login successful",
+    "existing_user_error": "There is already an existing customer with the provided email",
+    "failed_login": "Invalid email or password, please try again",
+    "other_error": "Registration failed, please try again later"
   }
 }
