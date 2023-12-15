@@ -60,5 +60,9 @@
     "img_desk_alt": "Демонстрация песочницы на широкоэкраном устройтсве",
     "img_mobile_alt": "Демонстрация песочницы на мобильном устройтсве"
   },
-  "img_school_alt": "Link to The Rolling Scopes School" 
+  "img_school_alt": "Link to The Rolling Scopes School",
+  "team_section": {
+    "title": "Наша команда",
+    "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
+  }
 }
