@@ -4,31 +4,58 @@ import classes from "./style.module.scss";
 import { useLocalization } from "../../utils/hooks/useLocalization";
 import IMG_DESK from "../../assets/demo-desk.png";
 import IMG_MOB from "../../assets/demo-mob.png";
+import { motion } from "framer-motion";
+
+const leftAnimation = {
+  hiden: {
+    x: -160,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+};
+const rightAnimation = {
+  hiden: {
+    x: 160,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+};
 
 const DemoSection: FC = (): ReactElement => {
   const dictionary = useLocalization().demo_section;
 
   return (
-    <section className={classes.demo}>
+    <motion.section
+      initial="hiden"
+      whileInView="visible"
+      viewport={{ amount: 0.1 }}
+      className={classes.demo}
+    >
       <SectionWrapper className={classes[`demo__wrapper`]}>
-        <div className={classes.text}>
+        <motion.div variants={leftAnimation} className={classes.text}>
           <p>{dictionary.text_1_white}</p>
           <p className={classes.colored}>{dictionary.text_1_colored}</p>
-        </div>
-        <div className={classes["img-desk"]}>
+        </motion.div>
+        <motion.div variants={rightAnimation} className={classes["img-desk"]}>
           <img src={IMG_DESK} alt={dictionary.img_desk_alt} />
-        </div>
+        </motion.div>
       </SectionWrapper>
       <SectionWrapper className={classes[`demo__wrapper`]}>
-        <div className={classes["img-mob"]}>
+        <motion.div variants={leftAnimation} className={classes["img-mob"]}>
           <img src={IMG_MOB} alt={dictionary.img_mobile_alt} />
-        </div>
-        <div className={classes.text}>
+        </motion.div>
+        <motion.div variants={rightAnimation} className={classes.text}>
           <p>{dictionary.text_2_white}</p>
           <p className={classes.colored}>{dictionary.text_2_colored}</p>
-        </div>
+        </motion.div>
       </SectionWrapper>
-    </section>
+    </motion.section>
   );
 };
 

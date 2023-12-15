@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ overflow: "hidden" }}>
         <Outlet />
       </main>
       <Footer />
