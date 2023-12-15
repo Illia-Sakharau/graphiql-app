@@ -5,10 +5,14 @@ import Button from "../../UI/button/Button";
 import { useLocalization } from "../../utils/hooks/useLocalization";
 import { useNavigate } from "react-router-dom";
 import { NavRoutes } from "../../utils/router/routes";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../api/firebase";
 
 const HeroBanner: FC = (): ReactElement => {
   const dictionary = useLocalization().herro_banner;
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const isAuth = !!user;
   const handleBtnClick = () => {
     navigate(NavRoutes.graphiQL);
   };
@@ -25,7 +29,9 @@ const HeroBanner: FC = (): ReactElement => {
           btnType={"rectangle"}
           onClick={handleBtnClick}
         >
-          {dictionary["btn-text"]}
+          {isAuth
+            ? dictionary["btn-text-auth"]
+            : dictionary["btn-text-nonauth"]}
         </Button>
       </SectionWrapper>
     </section>
