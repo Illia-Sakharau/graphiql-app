@@ -1,16 +1,16 @@
-import { ErrorResponse, useRouteError } from "react-router-dom";
+import Errors from "../modules/error/error";
+import Footer from "../modules/footer/Footer";
+import Header from "../modules/header/Header";
 
 export const ErrorPage = () => {
-  const error = useRouteError() as ErrorResponse;
-  console.error(error);
 
   return (
-    <div id="error-page">
-      <h2>Oops!</h2>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error instanceof Error ? error.message : error.statusText}</i>
-      </p>
-    </div>
+    <>
+      <Header />
+      <main>
+        <Errors />
+      </main>
+      <Footer />
+    </>
   );
 };
