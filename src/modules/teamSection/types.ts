@@ -3,4 +3,5 @@ export type DeveloperInfo = {
   position: string;
   description: string;
   photoURL: string;
+  githubUrl: string;
 };
