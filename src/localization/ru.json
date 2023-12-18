@@ -47,5 +47,23 @@
     "existing_user_error": "Уже существует клиент с указанным электронным адресом",
     "failed_login": "Неверный адрес электронной почты или пароль, попробуйте еще раз",
     "other_error": "Регистрация не удалась, повторите попытку позже"
+  },
+  "herro_banner": {
+    "description": "GraphiQL - это playground/IDE для graphQL запросов.",
+    "btn-text-nonauth": "Начать",
+    "btn-text-auth": "Открыть Песочницу"
+  },
+  "demo_section": {
+    "text_1_white": "Запросы с",
+    "text_1_colored": "подсветкой синтаксиса",
+    "text_2_white": "Продуманный дизайн",
+    "text_2_colored": "от широкоэкранных до мобильных устройств",
+    "img_desk_alt": "Демонстрация песочницы на широкоэкраном устройтсве",
+    "img_mobile_alt": "Демонстрация песочницы на мобильном устройтсве"
+  },
+  "img_school_alt": "Link to The Rolling Scopes School",
+  "team_section": {
+    "title": "Наша команда",
+    "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
   }
 }

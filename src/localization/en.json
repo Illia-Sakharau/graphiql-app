@@ -47,5 +47,23 @@
     "existing_user_error": "There is already an existing customer with the provided email",
     "failed_login": "Invalid email or password, please try again",
     "other_error": "Registration failed, please try again later"
+  },
+  "herro_banner": {
+    "description": "GraphiQL is a playground/IDE for graphQL requests.",
+    "btn-text-nonauth": "Get started",
+    "btn-text-auth": "Open Playground"
+  },
+  "demo_section": {
+    "text_1_white": "Requests with",
+    "text_1_colored": "syntax higlighting",
+    "text_2_white": "Elaborate design ",
+    "text_2_colored": "from mobile to desktop",
+    "img_desk_alt": "Playground on desktop demonstration",
+    "img_mobile_alt": "Playground on mobile demonstration"
+  },
+  "img_school_alt": "Link to The Rolling Scopes School",
+  "team_section": {
+    "title": "Our Team",
+    "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
   }
 }

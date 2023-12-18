@@ -62,7 +62,7 @@ const Footer: FC = (): ReactElement => {
               rel="noreferrer"
               className={classes["rss-logo"]}
             >
-              <img src={RSSLogo} alt="RSS Logo" />
+              <img src={RSSLogo} alt={dictionary.img_school_alt} />
             </a>
             <div className={classes.copyright}>© 2023</div>
           </div>

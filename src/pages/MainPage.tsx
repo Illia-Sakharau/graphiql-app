@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
-import { NavRoutes } from "../utils/router/routes";
+import DemoSection from "../modules/demoSection/DemoSection";
+import HeroBanner from "../modules/heroBanner/HeroBanner";
+import SchoolSection from "../modules/schoolSection/SchoolSection";
+import TeamSection from "../modules/teamSection/TeamSection";
 
 export const MainPage = () => (
-  <div>
-    <h2>Main Page</h2>
-    <Link to={NavRoutes.graphiQL}>graphiQL</Link>
-  </div>
+  <>
+    <HeroBanner />
+    <DemoSection />
+    <SchoolSection />
+    <TeamSection />
+  </>
 );
