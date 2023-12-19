@@ -9,7 +9,6 @@ const Errors = () => {
   const dictionary = useLocalization();
   const navigate = useNavigate();
 
-
   const handleBtnClick = () => {
     navigate(NavRoutes.mainPagePath);
   };
@@ -34,4 +33,4 @@ const Errors = () => {
   );
 };
 
-export default Errors
+export default Errors;
