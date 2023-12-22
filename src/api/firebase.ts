@@ -5,8 +5,9 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 
 import { showToastMessage } from "../modules/forms/util/showToastMessage";
 import { LoginType, RegistrationType } from "../types/forms";
@@ -25,6 +26,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+const setAPIs = async (APIsList: string[]) => {
+  const user = auth.currentUser;
+  if (user) {
+    try {
+      const { displayName, email } = user;
+      const apiRef = doc(db, "users", user.uid);
+      await setDoc(apiRef, {
+        name: displayName,
+        email,
+        APIsList,
+      });
+    } catch (error) {
+      showToastMessage(JSON.stringify(error), "red");
+    }
+  }
+};
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -58,11 +76,15 @@ const registerWithEmailAndPassword = async (
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
+    const userRef = doc(db, "users", user.uid);
+
+    updateProfile(user, {
+      displayName: name,
+    });
+    await setDoc(userRef, {
       name,
-      authProvider: "local",
       email,
+      APIsList: ["https://rickandmortyapi.com/graphql"],
     });
     showToastMessage(dictionary.success_registration, "green");
   } catch (error) {
@@ -87,4 +109,5 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   logout,
+  setAPIs,
 };
