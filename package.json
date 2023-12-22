@@ -18,7 +18,6 @@
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^2.0.1",
     "@types/toastify-js": "^1.12.3",
-    "create-graphql-docs": "^0.1.0",
     "firebase": "^10.7.1",
     "framer-motion": "^10.16.16",
     "graphql": "^16.8.1",

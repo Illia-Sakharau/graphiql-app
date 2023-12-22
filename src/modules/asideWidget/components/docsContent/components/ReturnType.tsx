@@ -1,8 +1,15 @@
-interface Props {
-  type: any;
+
+export interface Props1 {
+  type: PropsType;
 }
 
-function ReturnType(props: Props) {
+export interface PropsType {
+  kind: string;
+  name: string;
+  ofType: PropsType;
+}
+
+function ReturnType(props: Props1) {
   const type = props.type;
   //console.log(props)
 

@@ -1,5 +1,5 @@
 import { IntrospectionObjectType } from "graphql";
-import ReturnType from "./ReturnType";
+import ReturnType, { PropsType } from "./ReturnType";
 import style from "./documentation.module.scss";
 
 interface Props {
@@ -23,7 +23,7 @@ const Queries = (props: Props) => {
                   query.args.map((arg) => (
                     <div key={arg.name}>
                       <span className={style.docs_args}>{arg.name}</span>:{" "}
-                      <ReturnType type={arg.type} />
+                      <ReturnType type={arg.type as unknown as PropsType} />
                       {arg.defaultValue && (
                         <span>
                           {" "}
@@ -38,7 +38,7 @@ const Queries = (props: Props) => {
               </span>
 
               <span>
-                ): <ReturnType type={query.type} />
+                ): <ReturnType type={query.type as unknown as PropsType} />
               </span>
             </div>
             <div>{query.description}</div>
