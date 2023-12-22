@@ -13,7 +13,7 @@ import { useLocalization } from "../../../../../utils/hooks/useLocalization";
 const Documentation = () => {
   // const API_URL2 = 'https://rickandmortyapi.com/graphql';
   // const API_URL3 = 'https://countries.trevorblades.com';
-  const url = "https://rickandmortyapi.com/graphql"; // тут вызвать АРI сохраненное
+  const url = "https://countries.trevorblades.com"; // тут вызвать АРI сохраненное
 
   const dictionary = useLocalization();
   const [openTypes, setOpenTypes] = useState<boolean>(false);
@@ -26,10 +26,9 @@ const Documentation = () => {
 
   useEffect(() => {
     (async () => {
-      setSchema(await getSchema(url));
+      setSchema(await getSchema(url, dictionary.auth_messages));
     })();
   }, []);
-
   return (
     schema && (
       <div className={style.docs}>
