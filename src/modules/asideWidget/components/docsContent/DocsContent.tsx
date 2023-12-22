@@ -1,18 +1,7 @@
-import React from "react";
-import classes from "./style.module.scss";
-import { Suspense } from "react";
-import { Spiner } from "../../../../UI/spiner/spiner";
+import { FC, ReactElement } from "react";
 
-const Documentation = React.lazy(() => import("./components/Documentation"));
-
-const DocsContent = () => {
-  return (
-    <section className={classes.docs}>
-      <Suspense fallback={<Spiner />}>
-        <Documentation />
-      </Suspense>
-    </section>
-  );
+const DocsContent: FC = (): ReactElement => {
+  return <h4>DocsContent</h4>;
 };
 
 export default DocsContent;
