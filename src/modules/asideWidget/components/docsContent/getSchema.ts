@@ -16,7 +16,7 @@ export const getSchema = async (url: string, dictionary: authMessagesType) => {
     const result = await res.json();
     const schema = result.data.__schema;
 
-    return schema
+    return schema;
   } catch (e) {
     showToastMessage(dictionary.docs, "red");
   }

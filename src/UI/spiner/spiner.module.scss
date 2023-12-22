@@ -1,3 +1,5 @@
+@import "../../styles/tokens.scss";
+
 .loader_wrap {
   margin: auto;
 }
@@ -7,9 +9,9 @@
   height: 100px;
   margin: 20px auto;
   border-radius: 100px;
-  border-top: 5px solid rgb(235, 20, 20);
-  border-left: 3px solid rgb(57, 15, 244);
-  border-bottom: 4px solid rgb(165, 229, 2);
+  border-top: 5px solid $color-primary-20;
+  border-left: 3px solid $color-primary-60;
+  border-bottom: 4px solid $color-primary-98;
   border-right: transperent;
   animation: spinner 0.8s linear infinite;
 }

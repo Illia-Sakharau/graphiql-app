@@ -44,7 +44,7 @@ const Types = (props: Props) => {
                 {type.name}
               </button>
               {(type.description || (type.kind === "OBJECT" && type.fields)) &&
-                !openType[index] ? (
+              !openType[index] ? (
                 <span className={style.docs_symbol}> ▼</span>
               ) : null}
             </span>

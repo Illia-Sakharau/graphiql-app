@@ -8,7 +8,6 @@ interface Props {
 
 const Queries = (props: Props) => {
   const { queries } = props;
-
   return (
     queries && (
       <div className={style.docs_queries}>
@@ -36,7 +35,6 @@ const Queries = (props: Props) => {
                     </div>
                   ))}
               </span>
-
               <span>
                 ): <ReturnType type={query.type as unknown as PropsType} />
               </span>
