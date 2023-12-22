@@ -65,5 +65,10 @@
   "team_section": {
     "title": "Наша команда",
     "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
+  },
+  "docs": {
+    "docs": "Документация",
+    "types": "Типы",
+    "query": "Запросы"
   }
 }
