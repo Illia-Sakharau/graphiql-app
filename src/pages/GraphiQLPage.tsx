@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { NavRoutes } from "../utils/router/routes";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../api/firebase";
+import Playground from "../modules/playground/Playground";
 
 export const GraphiQLPage = () => {
   const navigate = useNavigate();
@@ -11,9 +12,5 @@ export const GraphiQLPage = () => {
     if (!user) navigate(NavRoutes.loginPagePath);
   }, [user]);
 
-  return (
-    <div>
-      <h2>GraphiQL Page</h2>
-    </div>
-  );
+  return <Playground />;
 };

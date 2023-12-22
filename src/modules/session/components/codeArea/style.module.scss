@@ -1,0 +1,10 @@
+@import "../../../../styles/tokens.scss";
+
+.wrapper {
+  padding: 16px;
+
+  & p {
+    @include font-mono;
+    color: $color-white;
+  }
+}
