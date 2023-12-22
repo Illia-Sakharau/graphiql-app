@@ -1,4 +1,3 @@
-
 interface Props {
   type: any;
 }
@@ -20,7 +19,7 @@ function ReturnType(props: Props) {
   }
 
   if (type.ofType.name) {
-    console.log(type)
+    console.log(type);
 
     if (type.kind === "NON_NULL") {
       return (
