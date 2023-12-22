@@ -7,7 +7,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 import { showToastMessage } from "../modules/forms/util/showToastMessage";
 import { LoginType, RegistrationType } from "../types/forms";
@@ -31,15 +31,31 @@ const setAPIs = async (APIsList: string[]) => {
   const user = auth.currentUser;
   if (user) {
     try {
-      const { displayName, email } = user;
       const apiRef = doc(db, "users", user.uid);
       await setDoc(apiRef, {
-        name: displayName,
-        email,
         APIsList,
       });
+      return true;
     } catch (error) {
       showToastMessage(JSON.stringify(error), "red");
+      return false;
+    }
+  }
+};
+
+const getAPIs = async () => {
+  const user = auth.currentUser;
+  if (user) {
+    try {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        return data.APIsList;
+      }
+    } catch (error) {
+      showToastMessage(JSON.stringify(error), "red");
+      return [];
     }
   }
 };
@@ -64,8 +80,10 @@ const logInWithEmailAndPassword = async (
   try {
     await signInWithEmailAndPassword(auth, email, password);
     showToastMessage(dictionary.success_login, "green");
+    return true;
   } catch (err) {
     showToastMessage(dictionary.failed_login, "red");
+    return false;
   }
 };
 
@@ -82,8 +100,6 @@ const registerWithEmailAndPassword = async (
       displayName: name,
     });
     await setDoc(userRef, {
-      name,
-      email,
       APIsList: ["https://rickandmortyapi.com/graphql"],
     });
     showToastMessage(dictionary.success_registration, "green");
@@ -110,4 +126,5 @@ export {
   registerWithEmailAndPassword,
   logout,
   setAPIs,
+  getAPIs,
 };

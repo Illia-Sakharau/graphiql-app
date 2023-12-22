@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { logInWithEmailAndPassword } from "../../../api/firebase";
+import { getAPIs, logInWithEmailAndPassword } from "../../../api/firebase";
 import { LoginType } from "../../../types/forms";
 import Button from "../../../UI/button/Button";
 import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
@@ -11,6 +11,8 @@ import { useLocalization } from "../../../utils/hooks/useLocalization";
 import { validationSchemaLogin } from "../util/validationSchema";
 import classes from "./form.module.scss";
 import CustomInput from "./input/CustomInput";
+import { useAppDispatch } from "../../../hooks/redux";
+import { apiSlice } from "../../../store/reducers/ApiSlice";
 
 type controlsType = "email" | "password";
 
@@ -18,6 +20,8 @@ const Login = () => {
   const dictionary = useLocalization();
   const { language } = useChangeLanguage();
   const validationSchema = validationSchemaLogin(dictionary.validation);
+  const dispatch = useAppDispatch();
+  const { setApiList } = apiSlice.actions;
 
   const formMethods = useForm({
     mode: "onChange",
@@ -34,8 +38,17 @@ const Login = () => {
     });
   }, [language]);
 
-  const onSubmit = (data: LoginType) => {
-    logInWithEmailAndPassword(data, dictionary.auth_messages);
+  const onSubmit = async (data: LoginType) => {
+    const isLogined = await logInWithEmailAndPassword(
+      data,
+      dictionary.auth_messages,
+    );
+    if (isLogined) {
+      const listFromDB = await getAPIs();
+      if (listFromDB.lenght !== 0) {
+        dispatch(setApiList(listFromDB));
+      }
+    }
   };
 
   return (
