@@ -5,12 +5,13 @@ type SliceFields = {
   apiList: string[];
 };
 
-const localAPI = localStorage.getItem('APIS');
+const localAPI = localStorage.getItem("APIS");
 
 const initialState: SliceFields = {
-  apiList: typeof(localAPI) === 'string' 
-    ? JSON.parse(localAPI) as string[] 
-    : ['https://rickandmortyapi.com/graphql'],
+  apiList:
+    typeof localAPI === "string"
+      ? (JSON.parse(localAPI) as string[])
+      : ["https://rickandmortyapi.com/graphql"],
   get currentApi() {
     return this.apiList[0];
   },

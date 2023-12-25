@@ -47,7 +47,7 @@ const Login = () => {
       const listFromDB = await getAPIs();
       if (listFromDB.lenght !== 0) {
         dispatch(setApiList(listFromDB));
-        localStorage.setItem('APIS', JSON.stringify(listFromDB))
+        localStorage.setItem("APIS", JSON.stringify(listFromDB));
       }
     }
   };

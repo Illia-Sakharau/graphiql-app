@@ -65,5 +65,14 @@
   "team_section": {
     "title": "Our Team",
     "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
+  },
+  "api_widget": {
+    "validation": {
+      "necessary": "Field should be filled",
+      "url": "Invalid URL (https://example.com)"
+    },
+    "api_exist": "This API already exists!",
+    "api_set": "API added!",
+    "api_error": "Something went wrong, try again!"
   }
 }

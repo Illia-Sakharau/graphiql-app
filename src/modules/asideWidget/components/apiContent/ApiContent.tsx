@@ -1,24 +1,15 @@
-import { FC, ReactElement } from "react";
-import { setAPIs } from "../../../../api/firebase";
-import Button from "../../../../UI/button/Button";
-import { useAppSelector } from "../../../../hooks/redux";
+import React from "react";
+import { Suspense } from "react";
 
-const ApiContent: FC = (): ReactElement => {
-  const { apiList } = useAppSelector((state) => state.apiReducer);
-  const handleClick = async () => {
-    setAPIs(["12", "2.com2"]);
-    console.log();
-  };
+const ApiWidgetInner = React.lazy(
+  () => import("../../../apiWidgetInner/ApiWidgetInner"),
+);
 
+const ApiContent = () => {
   return (
-    <>
-      <Button btnStyle={"primary"} btnType={"round"} onClick={handleClick}>
-        123
-      </Button>
-      {apiList.map((api) => (
-        <div key={api}>{api}</div>
-      ))}
-    </>
+    <Suspense fallback={<div>ADD SPINER</div>}>
+      <ApiWidgetInner />
+    </Suspense>
   );
 };
 
