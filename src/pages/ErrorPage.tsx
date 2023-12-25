@@ -1,4 +1,4 @@
-import Errors from "../modules/error/error";
+import Errors from "../modules/error/Error";
 import Footer from "../modules/footer/Footer";
 import Header from "../modules/header/Header";
 
