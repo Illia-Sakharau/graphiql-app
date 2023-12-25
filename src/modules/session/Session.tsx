@@ -13,7 +13,7 @@ const Session: FC = (): ReactElement => {
   return (
     <div className={classes.session}>
       <RequestZone requestValue={request} sendRequest={sendRequest} doc={doc} />
-      <ResponseZone value={response} />
+      <ResponseZone {...response} />
     </div>
   );
 };

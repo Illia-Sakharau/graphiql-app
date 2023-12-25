@@ -1,15 +1,12 @@
 export const getResponse = async (
-  body: string,
-  variables: Record<string, unknown> = {},
-  headers: Record<string, unknown> = {},
+  url: string,
+  body: RequestInit["body"],
+  headers: RequestInit["headers"],
 ) => {
-  const url = "https://rickandmortyapi.com/graphql";
-
-  console.log(url, body);
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...headers },
-    body: JSON.stringify({ query: body, variables }),
+    body,
   });
   const statusCode = response.status;
 
@@ -18,16 +15,27 @@ export const getResponse = async (
   return { data, errors, statusCode };
 };
 
-export const setOptions = (variablesValue: string, headersValue: string) => {
-  let headers;
-  let variables;
-
+export const createHeaders = (headersValue: string): RequestInit["headers"] => {
   try {
-    variables = variablesValue ? JSON.parse(variablesValue) : {};
-    headers = headersValue ? JSON.parse(headersValue) : {};
-  } catch {
-    //необходимо выбросить ошибку пользователю
+    const headers = headersValue ? JSON.parse(headersValue) : {};
+    return { "Content-Type": "application/json", ...headers };
+  } catch (error: unknown) {
+    if (error instanceof SyntaxError) {
+      throw error;
+    }
   }
+};
 
-  return { variables, headers };
+export const createBody = (
+  query: string,
+  variablesValue: string,
+): RequestInit["body"] => {
+  try {
+    const variables = variablesValue ? JSON.parse(variablesValue) : {};
+    return JSON.stringify({ query, variables });
+  } catch (error: unknown) {
+    if (error instanceof SyntaxError) {
+      throw error;
+    }
+  }
 };

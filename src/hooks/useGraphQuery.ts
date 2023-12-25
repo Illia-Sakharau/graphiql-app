@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-import { getResponse, setOptions } from "../api/graphiQL";
+import { createBody, createHeaders, getResponse } from "../api/graphiQL";
+import { showToastMessage } from "../modules/forms/util/showToastMessage";
 import { GraphQueryValue, ResponseData } from "../types/graphQuery";
+import { useAppSelector } from "./redux";
+import { useLocalization } from "./useLocalization";
 
 export const useGraphQuery = (): GraphQueryValue => {
+  const dictionary = useLocalization();
+  const url = useAppSelector((state) => state.apiReducer.currentApi);
+
   const [query, setQuery] = useState("");
   const [headersValue, setHeaders] = useState("");
   const [variablesValue, setVariables] = useState("");
@@ -16,19 +22,31 @@ export const useGraphQuery = (): GraphQueryValue => {
 
   const sendRequest = async () => {
     if (!query) {
-      //необходимо выбросить ошибку пользователю
+      showToastMessage(dictionary.empty_body, "red");
     }
 
-    const { variables, headers } = setOptions(variablesValue, headersValue);
+    if (!url) {
+      showToastMessage(dictionary.empty_url, "red");
+    }
+
     setIsLoading(true);
     try {
-      const { data, errors, statusCode } = await getResponse(
-        query,
-        variables,
-        headers,
-      );
-      console.log(data, statusCode);
-      setResponse({ data, errors, statusCode });
+      const headers = createHeaders(headersValue);
+      const body = createBody(query, variablesValue);
+
+      if (body) {
+        const { data, errors, statusCode } = await getResponse(
+          url,
+          body,
+          headers,
+        );
+
+        setResponse({ data, errors, statusCode });
+      }
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        showToastMessage(error.message, "red");
+      }
     } finally {
       setIsLoading(false);
     }
