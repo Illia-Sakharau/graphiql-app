@@ -1,11 +1,17 @@
 import { FC, ReactElement } from "react";
-import classes from "./style.module.scss";
-import CodeArea from "../codeArea/CodeArea";
 
-const ResponseZone: FC = (): ReactElement => {
+import { ResponseData } from "../../../../types/graphQuery";
+import CodeArea from "../codeArea/CodeArea";
+import classes from "./style.module.scss";
+
+type Props = {
+  value: ResponseData;
+};
+
+const ResponseZone: FC<Props> = ({ value }): ReactElement => {
   return (
     <div className={classes.wrapper}>
-      <CodeArea isEdidable={false} />
+      <CodeArea readOnly={true} value={JSON.stringify(value.data, null, 1)} />
     </div>
   );
 };

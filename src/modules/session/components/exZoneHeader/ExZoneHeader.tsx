@@ -1,7 +1,9 @@
 import { FC, ReactElement } from "react";
-import classes from "./style.module.scss";
+
 import ArrowIcon from "../../../../assets/icons/arrow-up.svg?react";
 import Button from "../../../../UI/button/Button";
+import { useLocalization } from "../../../../utils/hooks/useLocalization";
+import classes from "./style.module.scss";
 
 type Props = {
   isVariablesActive: boolean;
@@ -20,6 +22,8 @@ const ExZoneHeader: FC<Props> = ({
   switchIsExpande,
   isExpande,
 }): ReactElement => {
+  const dictionary = useLocalization();
+
   return (
     <div className={classes.header}>
       <div className={classes["btn-bar"]}>
@@ -29,7 +33,7 @@ const ExZoneHeader: FC<Props> = ({
           active={isExpande && isVariablesActive}
           onClick={expendVariables}
         >
-          Variables
+          {dictionary.variables}
         </Button>
         <Button
           btnStyle={"onBlack"}
@@ -37,7 +41,7 @@ const ExZoneHeader: FC<Props> = ({
           active={isExpande && isHeadersActive}
           onClick={expendHeaders}
         >
-          Headers
+          {dictionary.headers}
         </Button>
       </div>
       <Button

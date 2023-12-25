@@ -1,13 +1,18 @@
-import Button from "../../../../UI/button/Button";
-import classes from "./style.module.scss";
 import { FC, ReactElement } from "react";
 
 import PlayIcon from "../../../../assets/icons/play.svg?react";
 import PrettifyIcon from "../../../../assets/icons/prettify.svg?react";
+import Button from "../../../../UI/button/Button";
+import classes from "./style.module.scss";
 
-const ToolsBar: FC = (): ReactElement => {
+type Props = {
+  sendRequest: () => Promise<void>;
+};
+
+const ToolsBar: FC<Props> = ({ sendRequest }): ReactElement => {
   const runRequest = () => {
-    console.log("RUN");
+    sendRequest();
+    // console.log("RUN");
   };
   const prettify = () => {
     console.log("Prettify");

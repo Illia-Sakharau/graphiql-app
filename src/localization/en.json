@@ -67,6 +67,8 @@
     "title": "Our Team",
     "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
   },
+  "variables": "Variables",
+  "headers": "Headers",
   "docs": {
     "docs": "Docs",
     "types": "Types",

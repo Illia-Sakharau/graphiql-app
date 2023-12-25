@@ -1,10 +1,17 @@
 import { FC, ReactElement, useState } from "react";
-import classes from "./style.module.scss";
+
+import { ParamsValue } from "../../../../types/graphQuery";
 import ExZoneHeader from "../exZoneHeader/ExZoneHeader";
 import HeadersContent from "../headersContent/HeadersContent";
 import VariablesContent from "../variablesContent/VariablesContent";
+import classes from "./style.module.scss";
 
-const ExpandableZone: FC = (): ReactElement => {
+const ExpandableZone: FC<ParamsValue> = ({
+  headers,
+  setHeaders,
+  variables,
+  setVariables,
+}): ReactElement => {
   const [isExpande, setIsExpande] = useState(false);
   const [isVariablesActive, setIsVariablesActive] = useState(false);
   const [isHeadersActive, setIsHeadersActive] = useState(false);
@@ -38,8 +45,12 @@ const ExpandableZone: FC = (): ReactElement => {
         switchIsExpande={switchIsExpande}
         isExpande={isExpande}
       />
-      {isExpande && isHeadersActive && <HeadersContent />}
-      {isExpande && isVariablesActive && <VariablesContent />}
+      {isExpande && isHeadersActive && (
+        <HeadersContent value={headers} setValue={setHeaders} />
+      )}
+      {isExpande && isVariablesActive && (
+        <VariablesContent value={variables} setValue={setVariables} />
+      )}
     </div>
   );
 };

@@ -67,6 +67,8 @@
     "title": "Наша команда",
     "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
   },
+  "variables": "Переменные",
+  "headers": "Заголовки",
   "docs": {
     "docs": "Документация",
     "types": "Типы",
