@@ -9,3 +9,7 @@ export type RegistrationType = {
   password: string;
   confirmPassword: string;
 };
+
+export type AddNewApiType = {
+  api: string;
+};

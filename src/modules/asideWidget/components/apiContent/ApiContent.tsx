@@ -1,7 +1,16 @@
-import { FC, ReactElement } from "react";
+import React from "react";
+import { Suspense } from "react";
 
-const ApiContent: FC = (): ReactElement => {
-  return <h4>ApiContent</h4>;
+const ApiWidgetInner = React.lazy(
+  () => import("../../../apiWidgetInner/ApiWidgetInner"),
+);
+
+const ApiContent = () => {
+  return (
+    <Suspense fallback={<div>ADD SPINER</div>}>
+      <ApiWidgetInner />
+    </Suspense>
+  );
 };
 
 export default ApiContent;

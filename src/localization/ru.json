@@ -67,6 +67,15 @@
     "title": "Наша команда",
     "subtitle": "G.O.D.S. (Gurus Of Developmental Skills)"
   },
+  "api_widget": {
+    "validation": {
+      "necessary": "Поле должно быть заполнено",
+      "url": "Невалидный URL (https://example.com)"
+    },
+    "api_exist": "Это API уже существует",
+    "api_set": "API добавлен!",
+    "api_error": "Что-то пошло не так, попробуй ещё раз!"
+  },
   "variables": "Переменные",
   "headers": "Заголовки",
   "docs": {
