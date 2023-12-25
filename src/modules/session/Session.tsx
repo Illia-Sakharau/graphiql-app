@@ -1,13 +1,19 @@
-import { FC, ReactElement } from "react";
-import classes from "./style.module.scss";
+import { IntrospectionQuery } from "graphql";
+import { FC, ReactElement, useState } from "react";
+
+import { useGraphQuery } from "../../utils/hooks/useGraphQuery";
 import RequestZone from "./components/requestZone/RequestZone";
 import ResponseZone from "./components/responseZone/ResponseZone";
+import classes from "./style.module.scss";
 
 const Session: FC = (): ReactElement => {
+  const { request, sendRequest, response } = useGraphQuery();
+  const [doc] = useState<IntrospectionQuery | null>(null);
+
   return (
     <div className={classes.session}>
-      <RequestZone />
-      <ResponseZone />
+      <RequestZone requestValue={request} sendRequest={sendRequest} doc={doc} />
+      <ResponseZone value={response} />
     </div>
   );
 };

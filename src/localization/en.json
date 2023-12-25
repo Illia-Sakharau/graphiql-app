@@ -46,7 +46,8 @@
     "success_login": "Login successful",
     "existing_user_error": "There is already an existing customer with the provided email",
     "failed_login": "Invalid email or password, please try again",
-    "other_error": "Registration failed, please try again later"
+    "other_error": "Registration failed, please try again later",
+    "docs": "An error occurred while retrieving documentation!"
   },
   "herro_banner": {
     "description": "GraphiQL is a playground/IDE for graphQL requests.",
@@ -74,5 +75,12 @@
     "api_exist": "This API already exists!",
     "api_set": "API added!",
     "api_error": "Something went wrong, try again!"
+  },
+  "variables": "Variables",
+  "headers": "Headers",
+  "docs": {
+    "docs": "Docs",
+    "types": "Types",
+    "query": "Query"
   }
 }
