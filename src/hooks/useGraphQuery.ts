@@ -25,7 +25,7 @@ export const useGraphQuery = (): GraphQueryValue => {
       const { data, errors, statusCode } = await getResponse(
         query,
         variables,
-        headers
+        headers,
       );
       console.log(data, statusCode);
       setResponse({ data, errors, statusCode });

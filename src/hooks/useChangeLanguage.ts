@@ -5,7 +5,7 @@ import { LocalizationContextType } from "../types/localization";
 
 export const useChangeLanguage = () => {
   const { setLanguage, language } = useContext(
-    LocalizationContext
+    LocalizationContext,
   ) as LocalizationContextType;
 
   return { setLanguage, language };

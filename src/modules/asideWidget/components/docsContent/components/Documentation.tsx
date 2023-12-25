@@ -16,7 +16,7 @@ const Documentation = () => {
   const [schema, setSchema] = useState<IntrospectionSchema | null>(null);
   const queryType = schema?.types.find(({ name }) => name === "Query");
   const mainTypes = schema?.types.filter(
-    ({ name }) => name !== "Query" && !name.startsWith("__")
+    ({ name }) => name !== "Query" && !name.startsWith("__"),
   );
 
   useEffect(() => {

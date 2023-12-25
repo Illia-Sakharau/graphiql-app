@@ -41,7 +41,7 @@ const Login = () => {
   const onSubmit = async (data: LoginType) => {
     const isLogined = await logInWithEmailAndPassword(
       data,
-      dictionary.auth_messages
+      dictionary.auth_messages,
     );
     if (isLogined) {
       const listFromDB = await getAPIs();

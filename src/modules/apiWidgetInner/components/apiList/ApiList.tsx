@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import ApiItem from "../apiItem/ApiItem";
-import classes from './style.module.scss'
+import classes from "./style.module.scss";
 import { apiSlice } from "../../../../store/reducers/ApiSlice";
 
 const ApiList: FC = () => {
@@ -12,11 +12,13 @@ const ApiList: FC = () => {
   return (
     <div className={classes.list}>
       {apiList.map((api) => (
-        <ApiItem 
-          key={api} 
-          title={api} 
-          isActive={api===currentApi}
-          action={() => {dispatch(setCurrentApi(api))}}
+        <ApiItem
+          key={api}
+          title={api}
+          isActive={api === currentApi}
+          action={() => {
+            dispatch(setCurrentApi(api));
+          }}
         />
       ))}
     </div>

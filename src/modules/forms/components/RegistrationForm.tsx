@@ -38,7 +38,7 @@ const Registration = () => {
   const onSubmit = ({ name, email, password }: RegistrationType) => {
     registerWithEmailAndPassword(
       { name, email, password },
-      dictionary.auth_messages
+      dictionary.auth_messages,
     );
   };
 
