@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { getResponse, setOptions } from "../../api/graphiQL";
-import { GraphQueryValue, ResponseData } from "../../types/graphQuery";
+import { getResponse, setOptions } from "../api/graphiQL";
+import { GraphQueryValue, ResponseData } from "../types/graphQuery";
 
 export const useGraphQuery = (): GraphQueryValue => {
   const [query, setQuery] = useState("");
@@ -25,7 +25,7 @@ export const useGraphQuery = (): GraphQueryValue => {
       const { data, errors, statusCode } = await getResponse(
         query,
         variables,
-        headers,
+        headers
       );
       console.log(data, statusCode);
       setResponse({ data, errors, statusCode });

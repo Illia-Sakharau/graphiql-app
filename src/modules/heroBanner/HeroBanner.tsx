@@ -1,12 +1,13 @@
 import { FC, ReactElement } from "react";
-import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
-import classes from "./style.module.scss";
-import Button from "../../UI/button/Button";
-import { useLocalization } from "../../utils/hooks/useLocalization";
-import { useNavigate } from "react-router-dom";
-import { NavRoutes } from "../../utils/router/routes";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+
 import { auth } from "../../api/firebase";
+import { useLocalization } from "../../hooks/useLocalization";
+import Button from "../../UI/button/Button";
+import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
+import { NavRoutes } from "../../utils/router/routes";
+import classes from "./style.module.scss";
 
 const HeroBanner: FC = (): ReactElement => {
   const dictionary = useLocalization().herro_banner;

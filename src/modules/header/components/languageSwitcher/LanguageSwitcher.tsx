@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { useChangeLanguage } from "../../../../utils/hooks/useChangeLanguage";
+import { useChangeLanguage } from "../../../../hooks/useChangeLanguage";
 import classes from "./style.module.scss";
 
 const LANGUAGES = ["en", "ru"];

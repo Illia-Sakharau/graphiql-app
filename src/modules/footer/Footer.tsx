@@ -2,10 +2,10 @@ import { FC, ReactElement } from "react";
 
 import RSSLogo from "../../assets/rss-logo.svg";
 import NavBar from "../../components/navBar/NavBar";
+import { useLocalization } from "../../hooks/useLocalization";
 import { GithubLinkProps, linkInfo } from "../../types/components";
 import Logo from "../../UI/logo/Logo";
 import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
-import { useLocalization } from "../../utils/hooks/useLocalization";
 import { NavRoutes } from "../../utils/router/routes";
 import GithubLink from "./components/githubLink/GithubLink";
 import classes from "./style.module.scss";

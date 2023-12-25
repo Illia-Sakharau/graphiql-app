@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
 
 import ArrowIcon from "../../../../assets/icons/arrow-up.svg?react";
+import { useLocalization } from "../../../../hooks/useLocalization";
 import Button from "../../../../UI/button/Button";
-import { useLocalization } from "../../../../utils/hooks/useLocalization";
 import classes from "./style.module.scss";
 
 type Props = {

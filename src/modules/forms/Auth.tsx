@@ -1,10 +1,11 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { NavRoutes } from "../../utils/router/routes";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+
 import { auth } from "../../api/firebase";
+import { useLocalization } from "../../hooks/useLocalization";
+import { NavRoutes } from "../../utils/router/routes";
 import classes from "./auth.module.scss";
-import { useLocalization } from "../../utils/hooks/useLocalization";
 
 const Auth = () => {
   const navigate = useNavigate();

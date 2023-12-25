@@ -4,10 +4,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { registerWithEmailAndPassword } from "../../../api/firebase";
+import { useChangeLanguage } from "../../../hooks/useChangeLanguage";
+import { useLocalization } from "../../../hooks/useLocalization";
 import { RegistrationType } from "../../../types/forms";
 import Button from "../../../UI/button/Button";
-import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
 import { validationSchemaRegistration } from "../util/validationSchema";
 import classes from "./form.module.scss";
 import CustomInput from "./input/CustomInput";
@@ -38,7 +38,7 @@ const Registration = () => {
   const onSubmit = ({ name, email, password }: RegistrationType) => {
     registerWithEmailAndPassword(
       { name, email, password },
-      dictionary.auth_messages,
+      dictionary.auth_messages
     );
   };
 

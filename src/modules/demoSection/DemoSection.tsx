@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
 import { FC, ReactElement } from "react";
-import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
-import classes from "./style.module.scss";
-import { useLocalization } from "../../utils/hooks/useLocalization";
+
 import IMG_DESK from "../../assets/demo-desk.png";
 import IMG_MOB from "../../assets/demo-mob.png";
-import { motion } from "framer-motion";
+import { useLocalization } from "../../hooks/useLocalization";
+import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
+import classes from "./style.module.scss";
 
 const leftAnimation = {
   hiden: {

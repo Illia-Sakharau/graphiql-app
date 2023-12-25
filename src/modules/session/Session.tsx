@@ -1,7 +1,7 @@
 import { IntrospectionQuery } from "graphql";
 import { FC, ReactElement, useState } from "react";
 
-import { useGraphQuery } from "../../utils/hooks/useGraphQuery";
+import { useGraphQuery } from "../../hooks/useGraphQuery";
 import RequestZone from "./components/requestZone/RequestZone";
 import ResponseZone from "./components/responseZone/ResponseZone";
 import classes from "./style.module.scss";
