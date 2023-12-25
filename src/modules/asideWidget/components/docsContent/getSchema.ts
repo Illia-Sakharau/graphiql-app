@@ -1,8 +1,12 @@
-import { getIntrospectionQuery } from "graphql";
+import { getIntrospectionQuery, IntrospectionQuery } from "graphql";
+
 import { authMessagesType } from "../../../../types/localization";
 import { showToastMessage } from "../../../forms/util/showToastMessage";
 
-export const getSchema = async (url: string, dictionary: authMessagesType) => {
+export const getSchema = async (
+  url: string,
+  dictionary: authMessagesType,
+): Promise<IntrospectionQuery | undefined> => {
   try {
     const res = await fetch(url, {
       method: "POST",
@@ -13,11 +17,11 @@ export const getSchema = async (url: string, dictionary: authMessagesType) => {
         query: getIntrospectionQuery(),
       }),
     });
-    const result = await res.json();
-    const schema = result.data.__schema;
+    const schema = await res.json();
 
-    return schema;
+    return schema.data;
   } catch (e) {
     showToastMessage(dictionary.docs, "red");
+    return undefined;
   }
 };

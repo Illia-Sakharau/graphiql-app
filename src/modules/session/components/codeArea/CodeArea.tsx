@@ -1,11 +1,18 @@
-import { graphql } from "cm6-graphql";
+import { graphql, updateSchema } from "cm6-graphql";
 import { GraphQLSchema } from "graphql";
-import { Dispatch, FC, ReactElement, SetStateAction } from "react";
+import {
+  Dispatch,
+  FC,
+  ReactElement,
+  SetStateAction,
+  useEffect,
+  useRef,
+} from "react";
 
 import { json, jsonParseLinter } from "@codemirror/lang-json";
 import { linter } from "@codemirror/lint";
 import { aura } from "@uiw/codemirror-theme-aura";
-import CodeMirror from "@uiw/react-codemirror";
+import { useCodeMirror } from "@uiw/react-codemirror";
 
 import classes from "./style.module.scss";
 
@@ -22,6 +29,8 @@ const CodeArea: FC<Props> = ({
   schema,
   setValue,
 }): ReactElement => {
+  const codeArea = useRef<HTMLDivElement>(null);
+
   const extensions = schema
     ? [graphql(schema)]
     : [json(), linter(jsonParseLinter())];
@@ -32,17 +41,30 @@ const CodeArea: FC<Props> = ({
     }
   };
 
-  return (
-    <div className={classes.wrapper}>
-      <CodeMirror
-        value={value ?? ""}
-        theme={aura}
-        readOnly={readOnly ?? false}
-        extensions={extensions}
-        onChange={(value) => onChangeValue(value)}
-      />
-    </div>
-  );
+  const { setContainer, view } = useCodeMirror({
+    extensions,
+    theme: aura,
+    value: value ?? "",
+    container: codeArea.current,
+    readOnly: readOnly ?? false,
+    onChange(value) {
+      onChangeValue(value);
+    },
+  });
+
+  useEffect(() => {
+    if (view && schema) {
+      updateSchema(view, schema);
+    }
+  }, [schema, view]);
+
+  useEffect(() => {
+    if (codeArea.current) {
+      setContainer(codeArea.current);
+    }
+  }, [codeArea, setContainer]);
+
+  return <section className={classes.wrapper} ref={codeArea} />;
 };
 
 export default CodeArea;
