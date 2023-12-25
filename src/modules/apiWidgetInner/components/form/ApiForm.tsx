@@ -4,18 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CustomInput from "../../../forms/components/input/CustomInput";
 import Button from "../../../../UI/button/Button";
 import { FC } from "react";
-import { apiWidgetType } from "../../../../types/localization";
 import classes from "./style.module.scss";
 import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import useAddingApi from "../../hooks/useAddingApi";
+import { useLocalization } from "../../../../utils/hooks/useLocalization";
 
-type Props = {
-  dictionary: apiWidgetType;
-};
-
-const ApiForm: FC<Props> = ({ dictionary }) => {
+const ApiForm: FC = () => {
+  const dictionary = useLocalization().api_widget;
   const validationSchema = validationSchemaNewApi(dictionary);
-  const { handleAddNewApi } = useAddingApi();
+  const { handleAddNewApi, isLoading } = useAddingApi();
   const formMethods = useForm({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -33,6 +30,7 @@ const ApiForm: FC<Props> = ({ dictionary }) => {
           btnStyle={"primary"}
           btnType={"round"}
           className={classes.button}
+          active={isLoading}
         >
           <PlusIcon />
         </Button>
