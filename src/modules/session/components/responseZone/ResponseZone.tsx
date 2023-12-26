@@ -1,15 +1,15 @@
 import { FC, ReactElement, useEffect, useState } from "react";
 
-import { ResponseData } from "../../../../types/graphQuery";
+import { useAppSelector } from "../../../../hooks/redux";
 import CodeArea from "../codeArea/CodeArea";
 import classes from "./style.module.scss";
 
-const ResponseZone: FC<ResponseData> = ({
-  data,
-  errors,
-  statusCode,
-}): ReactElement => {
+const ResponseZone: FC = (): ReactElement => {
   const [value, setValue] = useState("");
+
+  const { data, errors, statusCode } = useAppSelector(
+    (state) => state.graphValueReducer.response,
+  );
 
   useEffect(() => {
     if (statusCode) {

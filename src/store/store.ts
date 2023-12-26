@@ -1,8 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 import { apiReducer } from "./reducers/ApiSlice";
+import { graphValueReducer } from "./reducers/GraphValueSlice";
 
 const rootReducer = combineReducers({
   apiReducer,
+  graphValueReducer,
 });
 
 export const setupStore = () => {

@@ -1,14 +1,22 @@
-import { Dispatch, FC, ReactElement, SetStateAction } from "react";
+import { FC, ReactElement } from "react";
 
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import { graphValueSlice } from "../../../../store/reducers/GraphValueSlice";
 import CodeArea from "../codeArea/CodeArea";
 
-type Props = {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
-};
+const HeadersContent: FC = (): ReactElement => {
+  const dispatch = useAppDispatch();
 
-const HeadersContent: FC<Props> = ({ value, setValue }): ReactElement => {
-  return <CodeArea value={value} setValue={setValue} />;
+  const { setHeaders } = graphValueSlice.actions;
+
+  const { headers } = useAppSelector((state) => state.graphValueReducer);
+
+  const setValue = (value: string): void => {
+    const action = setHeaders(value);
+    dispatch(action);
+  };
+
+  return <CodeArea value={headers} setValue={setValue} />;
 };
 
 export default HeadersContent;

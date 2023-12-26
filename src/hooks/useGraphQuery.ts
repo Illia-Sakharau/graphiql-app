@@ -1,68 +1,52 @@
-import { useState } from "react";
-
 import { createBody, createHeaders, getResponse } from "../api/graphiQL";
 import { showToastMessage } from "../modules/forms/util/showToastMessage";
-import { GraphQueryValue, ResponseData } from "../types/graphQuery";
-import { useAppSelector } from "./redux";
+import { graphValueSlice } from "../store/reducers/GraphValueSlice";
+import { useAppDispatch, useAppSelector } from "./redux";
 import { useLocalization } from "./useLocalization";
 
-export const useGraphQuery = (): GraphQueryValue => {
+export const useGraphQuery = (): (() => Promise<void>) => {
+  const dispatch = useAppDispatch();
   const dictionary = useLocalization();
-  const url = useAppSelector((state) => state.apiReducer.currentApi);
 
-  const [query, setQuery] = useState("");
-  const [headersValue, setHeaders] = useState("");
-  const [variablesValue, setVariables] = useState("");
-  const [response, setResponse] = useState<ResponseData>({
-    data: null,
-    errors: null,
-    statusCode: null,
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  const { setIsLoading, setResponse } = graphValueSlice.actions;
+
+  const { currentApi } = useAppSelector((state) => state.apiReducer);
+
+  const { query, headers, variables } = useAppSelector(
+    (state) => state.graphValueReducer,
+  );
 
   const sendRequest = async () => {
     if (!query) {
       showToastMessage(dictionary.empty_body, "red");
     }
 
-    if (!url) {
+    if (!currentApi) {
       showToastMessage(dictionary.empty_url, "red");
     }
 
-    setIsLoading(true);
+    dispatch(setIsLoading(true));
     try {
-      const headers = createHeaders(headersValue);
-      const body = createBody(query, variablesValue);
+      const headersInit = createHeaders(headers);
+      const body = createBody(query, variables);
 
       if (body) {
         const { data, errors, statusCode } = await getResponse(
-          url,
+          currentApi,
           body,
-          headers,
+          headersInit,
         );
 
-        setResponse({ data, errors, statusCode });
+        dispatch(setResponse({ data, errors, statusCode }));
       }
     } catch (error) {
       if (error instanceof SyntaxError) {
         showToastMessage(error.message, "red");
       }
     } finally {
-      setIsLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 
-  return {
-    request: {
-      query,
-      setQuery,
-      headers: headersValue,
-      setHeaders,
-      variables: variablesValue,
-      setVariables,
-    },
-    sendRequest,
-    isLoading,
-    response,
-  };
+  return sendRequest;
 };
