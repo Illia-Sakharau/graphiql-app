@@ -4,38 +4,36 @@ import { FC, ReactElement, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { useLocalization } from "../../../../hooks/useLocalization";
 import { apiSlice } from "../../../../store/reducers/ApiSlice";
-import { RequestValue } from "../../../../types/graphQuery";
+import { graphValueSlice } from "../../../../store/reducers/GraphValueSlice";
 import { getSchema } from "../../../asideWidget/components/docsContent/getSchema";
 import CodeArea from "../codeArea/CodeArea";
 import ExpandableZone from "../expandableZone/ExpandableZone";
 import ToolsBar from "../toolsBar/ToolsBar";
 import classes from "./style.module.scss";
 
-type Props = {
-  sendRequest: () => Promise<void>;
-  requestValue: RequestValue;
-};
-
-const RequestZone: FC<Props> = ({
-  requestValue,
-  sendRequest,
-}): ReactElement => {
+const RequestZone: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
   const dictionary = useLocalization();
+
   const { setSchema } = apiSlice.actions;
+  const { setQuery } = graphValueSlice.actions;
 
-  const url = useAppSelector((state) => state.apiReducer.currentApi);
-  const schema = useAppSelector((state) => state.apiReducer.schema);
+  const { query } = useAppSelector((state) => state.graphValueReducer);
+  const { currentApi, schema } = useAppSelector((state) => state.apiReducer);
 
-  const { query, setQuery, ...paramsValue } = requestValue;
   const [graphQLSchema, setGraphQLSchema] = useState(buildSchema("type Query"));
+
+  const setValue = (value: string): void => {
+    const action = setQuery(value);
+    dispatch(action);
+  };
 
   useEffect(() => {
     (async () => {
-      const schema = await getSchema(url, dictionary.auth_messages);
+      const schema = await getSchema(currentApi, dictionary.auth_messages);
       dispatch(setSchema(schema ?? null));
     })();
-  }, [url]);
+  }, [currentApi]);
 
   useEffect(() => {
     if (schema) {
@@ -48,10 +46,10 @@ const RequestZone: FC<Props> = ({
   return (
     <div className={classes.wrapper}>
       <div className={classes.main}>
-        <CodeArea schema={graphQLSchema} value={query} setValue={setQuery} />
-        <ToolsBar sendRequest={sendRequest} />
+        <CodeArea schema={graphQLSchema} value={query} setValue={setValue} />
+        <ToolsBar />
       </div>
-      <ExpandableZone {...paramsValue} />
+      <ExpandableZone />
     </div>
   );
 };

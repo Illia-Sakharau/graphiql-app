@@ -1,13 +1,6 @@
 import { graphql, updateSchema } from "cm6-graphql";
 import { GraphQLSchema } from "graphql";
-import {
-  Dispatch,
-  FC,
-  ReactElement,
-  SetStateAction,
-  useEffect,
-  useRef,
-} from "react";
+import { FC, ReactElement, useEffect, useRef } from "react";
 
 import { json, jsonParseLinter } from "@codemirror/lang-json";
 import { linter } from "@codemirror/lint";
@@ -17,16 +10,16 @@ import { useCodeMirror } from "@uiw/react-codemirror";
 import classes from "./style.module.scss";
 
 type Props = {
-  readOnly?: boolean;
   value: string;
-  setValue?: Dispatch<SetStateAction<string>>;
+  readOnly?: boolean;
   schema?: GraphQLSchema;
+  setValue?: (value: string) => void;
 };
 
 const CodeArea: FC<Props> = ({
-  readOnly,
   value,
   schema,
+  readOnly,
   setValue,
 }): ReactElement => {
   const codeArea = useRef<HTMLDivElement>(null);

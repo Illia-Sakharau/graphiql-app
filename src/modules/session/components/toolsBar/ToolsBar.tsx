@@ -2,17 +2,17 @@ import { FC, ReactElement } from "react";
 
 import PlayIcon from "../../../../assets/icons/play.svg?react";
 import PrettifyIcon from "../../../../assets/icons/prettify.svg?react";
+import { useGraphQuery } from "../../../../hooks/useGraphQuery";
 import Button from "../../../../UI/button/Button";
 import classes from "./style.module.scss";
 
-type Props = {
-  sendRequest: () => Promise<void>;
-};
+const ToolsBar: FC = (): ReactElement => {
+  const sendRequest = useGraphQuery();
 
-const ToolsBar: FC<Props> = ({ sendRequest }): ReactElement => {
   const runRequest = () => {
     sendRequest();
   };
+
   const prettify = () => {
     console.log("Prettify");
   };
