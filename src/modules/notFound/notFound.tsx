@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
+
 import NotFound from "../../assets/notfound.svg";
+import { useLocalization } from "../../hooks/useLocalization";
+import Button from "../../UI/button/Button";
 import { NavRoutes } from "../../utils/router/routes";
 import classes from "./notFound.module.scss";
-import Button from "../../UI/button/Button";
-import { useLocalization } from "../../utils/hooks/useLocalization";
 
 export const NotFound404 = () => {
   const navigate = useNavigate();

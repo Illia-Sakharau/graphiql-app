@@ -4,15 +4,15 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { getAPIs, logInWithEmailAndPassword } from "../../../api/firebase";
+import { useAppDispatch } from "../../../hooks/redux";
+import { useChangeLanguage } from "../../../hooks/useChangeLanguage";
+import { useLocalization } from "../../../hooks/useLocalization";
+import { apiSlice } from "../../../store/reducers/ApiSlice";
 import { LoginType } from "../../../types/forms";
 import Button from "../../../UI/button/Button";
-import { useChangeLanguage } from "../../../utils/hooks/useChangeLanguage";
-import { useLocalization } from "../../../utils/hooks/useLocalization";
 import { validationSchemaLogin } from "../util/validationSchema";
 import classes from "./form.module.scss";
 import CustomInput from "./input/CustomInput";
-import { useAppDispatch } from "../../../hooks/redux";
-import { apiSlice } from "../../../store/reducers/ApiSlice";
 
 type controlsType = "email" | "password";
 

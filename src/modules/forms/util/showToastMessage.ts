@@ -1,5 +1,5 @@
-import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 export const showToastMessage = (
   message: string,
@@ -17,6 +17,8 @@ export const showToastMessage = (
     close: true,
     gravity: "bottom",
     position: "right",
-    backgroundColor: background,
+    style: {
+      background,
+    },
   }).showToast();
 };

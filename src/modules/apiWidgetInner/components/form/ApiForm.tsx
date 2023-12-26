@@ -1,13 +1,15 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { validationSchemaNewApi } from "../../util/validationSchema";
-import { yupResolver } from "@hookform/resolvers/yup";
-import CustomInput from "../../../forms/components/input/CustomInput";
-import Button from "../../../../UI/button/Button";
 import { FC } from "react";
-import classes from "./style.module.scss";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import PlusIcon from "../../../../assets/icons/plus.svg?react";
+import { useLocalization } from "../../../../hooks/useLocalization";
+import Button from "../../../../UI/button/Button";
+import CustomInput from "../../../forms/components/input/CustomInput";
 import useAddingApi from "../../hooks/useAddingApi";
-import { useLocalization } from "../../../../utils/hooks/useLocalization";
+import { validationSchemaNewApi } from "../../util/validationSchema";
+import classes from "./style.module.scss";
 
 const ApiForm: FC = () => {
   const dictionary = useLocalization().api_widget;

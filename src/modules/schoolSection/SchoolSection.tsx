@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import { FC, ReactElement } from "react";
+
+import RSS_LOGO from "../../assets/rss-logo-2.svg";
+import { useLocalization } from "../../hooks/useLocalization";
 import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
 import classes from "./style.module.scss";
-import { useLocalization } from "../../utils/hooks/useLocalization";
-import RSS_LOGO from "../../assets/rss-logo-2.svg";
-import { motion } from "framer-motion";
 
 const opacityAnimation = {
   hiden: {

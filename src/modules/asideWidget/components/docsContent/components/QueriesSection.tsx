@@ -1,8 +1,9 @@
 import { IntrospectionObjectType, IntrospectionType } from "graphql";
-import Queries from "./Queries";
-import style from "./documentation.module.scss";
 import { useState } from "react";
-import { useLocalization } from "../../../../../utils/hooks/useLocalization";
+
+import { useLocalization } from "../../../../../hooks/useLocalization";
+import style from "./documentation.module.scss";
+import Queries from "./Queries";
 
 interface QueriesSection {
   queryType: IntrospectionType | undefined;

@@ -1,8 +1,9 @@
 import { ErrorResponse, useNavigate, useRouteError } from "react-router-dom";
-import classes from "./error.module.scss";
+
+import { useLocalization } from "../../hooks/useLocalization";
 import Button from "../../UI/button/Button";
-import { useLocalization } from "../../utils/hooks/useLocalization";
 import { NavRoutes } from "../../utils/router/routes";
+import classes from "./error.module.scss";
 
 const Errors = () => {
   const error = useRouteError() as ErrorResponse;

@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import { FC, ReactElement } from "react";
+
+import { useLocalization } from "../../hooks/useLocalization";
 import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
-import classes from "./style.module.scss";
+import { MDeveloperCard } from "./components/developerCard/DeveloperCard";
 import SectionHeader from "./components/header/SectionHeader";
 import { DEVELOPERS_INFO } from "./constants";
-import { useLocalization } from "../../utils/hooks/useLocalization";
-import { motion } from "framer-motion";
-import { MDeveloperCard } from "./components/developerCard/DeveloperCard";
+import classes from "./style.module.scss";
 
 const topAnimation = {
   hiden: {

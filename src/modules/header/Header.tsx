@@ -1,16 +1,17 @@
-import classes from "./style.module.scss";
 import { FC, ReactElement, useEffect, useState } from "react";
-import { linkInfo } from "../../types/components";
-import NavBar from "../../components/navBar/NavBar";
-import { NavRoutes } from "../../utils/router/routes";
-import Logo from "../../UI/logo/Logo";
-import LanguageSwitcher from "./components/languageSwitcher/LanguageSwitcher";
-import { useLocalization } from "../../utils/hooks/useLocalization";
-import Button from "../../UI/button/Button";
-import ExitIcon from "../../assets/icons/logout.svg?react";
-import MobileMenu from "./components/mobileMenu/MobileMenu";
 import { useAuthState } from "react-firebase-hooks/auth";
+
 import { auth, logout } from "../../api/firebase";
+import ExitIcon from "../../assets/icons/logout.svg?react";
+import NavBar from "../../components/navBar/NavBar";
+import { useLocalization } from "../../hooks/useLocalization";
+import { linkInfo } from "../../types/components";
+import Button from "../../UI/button/Button";
+import Logo from "../../UI/logo/Logo";
+import { NavRoutes } from "../../utils/router/routes";
+import LanguageSwitcher from "./components/languageSwitcher/LanguageSwitcher";
+import MobileMenu from "./components/mobileMenu/MobileMenu";
+import classes from "./style.module.scss";
 
 const Header: FC = (): ReactElement => {
   const [isTop, setIsTop] = useState(true);

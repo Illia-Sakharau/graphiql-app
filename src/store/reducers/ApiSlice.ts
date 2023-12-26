@@ -1,8 +1,11 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IntrospectionQuery } from "graphql";
+
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type SliceFields = {
   currentApi: string;
   apiList: string[];
+  schema: IntrospectionQuery | null;
 };
 
 const localAPI = localStorage.getItem("APIS");
@@ -15,6 +18,7 @@ const initialState: SliceFields = {
   get currentApi() {
     return this.apiList[0];
   },
+  schema: null,
 };
 
 export const apiSlice = createSlice({
@@ -30,6 +34,12 @@ export const apiSlice = createSlice({
     },
     setApiList(state, action: PayloadAction<string[]>) {
       state.apiList = action.payload;
+    },
+    setSchema(state, action: PayloadAction<IntrospectionQuery | null>) {
+      return {
+        ...state,
+        schema: action.payload,
+      };
     },
   },
 });

@@ -82,5 +82,7 @@
     "docs": "Docs",
     "types": "Types",
     "query": "Query"
-  }
+  },
+  "empty_body": "Enter data in playground/IDE to request",
+  "empty_url": "Enter url to request"
 }

@@ -1,8 +1,9 @@
 import { IntrospectionType } from "graphql";
-import Types from "./Types";
-import style from "./documentation.module.scss";
-import { useLocalization } from "../../../../../utils/hooks/useLocalization";
 import { useState } from "react";
+
+import { useLocalization } from "../../../../../hooks/useLocalization";
+import style from "./documentation.module.scss";
+import Types from "./Types";
 
 interface TypesSection {
   mainTypes: IntrospectionType[] | undefined;

@@ -12,7 +12,6 @@ type Props = {
 const ToolsBar: FC<Props> = ({ sendRequest }): ReactElement => {
   const runRequest = () => {
     sendRequest();
-    // console.log("RUN");
   };
   const prettify = () => {
     console.log("Prettify");
