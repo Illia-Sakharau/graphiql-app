@@ -5,16 +5,23 @@ import PrettifyIcon from "../../../../assets/icons/prettify.svg?react";
 import { useGraphQuery } from "../../../../hooks/useGraphQuery";
 import Button from "../../../../UI/button/Button";
 import classes from "./style.module.scss";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import { graphValueSlice } from "../../../../store/reducers/GraphValueSlice";
+import prettifyCode from "../../utils/prettifyCode";
 
 const ToolsBar: FC = (): ReactElement => {
   const sendRequest = useGraphQuery();
+  const { query } = useAppSelector((state) => state.graphValueReducer);
+  const { setQuery } = graphValueSlice.actions;
+  const dispatch = useAppDispatch();
 
   const runRequest = () => {
     sendRequest();
   };
 
   const prettify = () => {
-    console.log("Prettify");
+    const preparedCode = prettifyCode(query);
+    dispatch(setQuery(preparedCode));
   };
 
   return (
