@@ -20,7 +20,7 @@ const ResponseZone: FC = (): ReactElement => {
   }, [data]);
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} data-testid="response-zone">
       <CodeArea readOnly={true} value={value} />
     </div>
   );
