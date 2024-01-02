@@ -33,6 +33,7 @@ const ApiForm: FC = () => {
           btnType={"round"}
           className={classes.button}
           active={isLoading}
+          data-testid="add-api-button"
         >
           <PlusIcon />
         </Button>
