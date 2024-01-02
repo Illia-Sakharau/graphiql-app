@@ -43,6 +43,6 @@ export const routes = [
       },
     ],
   },
-]
+];
 
 export const routesConfig = createBrowserRouter(routes);
