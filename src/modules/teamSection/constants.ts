@@ -16,7 +16,7 @@ export const DEVELOPERS_INFO: DeveloperInfo[] = [
     name: "FilMaxim",
     position: "Developer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "I was born in Donetsk on November 15, 1992. Graduated from Donetsk National Technical University🏫. I work as a chief engineer and programmer of CNC machines.🕵️‍♂️  I’ve been doing front-end development at RS School for a year now, it’s very interesting and addictive like a drug.  I also travel a lot and am not tied to my place of residence. Visited many countries. I love football⚽️. And I want to fly to Mars or the Moon.😉",
     photoURL: PHOTO_MAX,
     githubUrl: "https://github.com/FilMaxim",
   },
