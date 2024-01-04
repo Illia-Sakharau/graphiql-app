@@ -35,7 +35,7 @@ const Documentation = () => {
 
   return (
     schema && (
-      <div className={style.docs}>
+      <div className={style.docs} data-testid="documentation">
         <TypesSection mainTypes={types.mainTypes} />
         <QueriesSection queryType={types.queryType} />
       </div>

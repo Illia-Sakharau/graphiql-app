@@ -14,8 +14,7 @@ export default defineConfig({
       all: true,
       provider: 'v8',
       include: ['**/*.{js,mjs,ts,mts,cts,jsx,tsx}'],
-      exclude: ['**/types/', '**/api/'],
-
+      exclude: ['**/types/', '**/api/', "**/vite-env.d.ts", "**/client.d.ts", "**/types.ts"],
     },
   },
 })

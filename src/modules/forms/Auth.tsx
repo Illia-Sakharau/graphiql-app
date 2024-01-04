@@ -22,12 +22,14 @@ const Auth = () => {
         <NavLink
           to={NavRoutes.loginPagePath}
           className={({ isActive }) => (isActive ? classes.active : "")}
+          data-testid="login"
         >
           {dictionary.navigation.login}
         </NavLink>
         <NavLink
           to={NavRoutes.registrationPagePath}
           className={({ isActive }) => (isActive ? classes.active : "")}
+          data-testid="registration"
         >
           {dictionary.navigation.registration}
         </NavLink>
