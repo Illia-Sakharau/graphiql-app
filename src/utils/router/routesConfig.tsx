@@ -9,7 +9,7 @@ import { NavRoutes } from "./routes";
 import { ErrorPage } from "../../pages/ErrorPage";
 import Auth from "../../modules/forms/Auth";
 
-export const routesConfig = createBrowserRouter([
+export const routes = [
   {
     path: NavRoutes.mainPagePath,
     element: <RootLayout />,
@@ -43,4 +43,6 @@ export const routesConfig = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+export const routesConfig = createBrowserRouter(routes);

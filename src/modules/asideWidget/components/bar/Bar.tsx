@@ -2,13 +2,12 @@ import Button from "../../../../UI/button/Button";
 import classes from "./style.module.scss";
 import { FC, ReactElement, useEffect, useState } from "react";
 import { SwitchContentProps } from "../../types/components";
-import EndpointsContent from "../endpointsContent/EndpointsContent";
 import DocsContent from "../docsContent/DocsContent";
 import ApiContent from "../apiContent/ApiContent";
 
 import ApiIcon from "../../../../assets/icons/api.svg?react";
 import BookIcon from "../../../../assets/icons/book.svg?react";
-import EndpointIcon from "../../../../assets/icons/endpoint.svg?react";
+import { useLocalization } from "../../../../hooks/useLocalization";
 
 type Props = {
   switchContent: (propps: SwitchContentProps) => void;
@@ -16,14 +15,13 @@ type Props = {
 };
 
 const Bar: FC<Props> = ({ switchContent, isContentOpen }): ReactElement => {
+  const dictionary = useLocalization();
   const [isApiActive, setIsApiActive] = useState(false);
   const [isDocsActive, setIsDocsActive] = useState(false);
-  const [isEndpointsActive, setIsEndpointsActive] = useState(false);
 
   const swithOffAllAside = () => {
     setIsApiActive(false);
     setIsDocsActive(false);
-    setIsEndpointsActive(false);
   };
 
   const handleApiClick = () => {
@@ -39,21 +37,11 @@ const Bar: FC<Props> = ({ switchContent, isContentOpen }): ReactElement => {
   const handleDocsClick = () => {
     switchContent({
       isOpen: !isDocsActive,
-      title: "Docs",
+      title: dictionary.docs.docs,
       content: <DocsContent />,
     });
     swithOffAllAside();
     setIsDocsActive(!isDocsActive);
-  };
-
-  const handleEndpointsClick = () => {
-    switchContent({
-      isOpen: !isEndpointsActive,
-      title: "Endpoints",
-      content: <EndpointsContent />,
-    });
-    swithOffAllAside();
-    setIsEndpointsActive(!isEndpointsActive);
   };
 
   useEffect(() => {
@@ -69,6 +57,7 @@ const Bar: FC<Props> = ({ switchContent, isContentOpen }): ReactElement => {
         btnType={"round"}
         active={isApiActive}
         onClick={handleApiClick}
+        data-testid="api-button"
       >
         <ApiIcon />
       </Button>
@@ -78,16 +67,9 @@ const Bar: FC<Props> = ({ switchContent, isContentOpen }): ReactElement => {
         btnType={"round"}
         active={isDocsActive}
         onClick={handleDocsClick}
+        data-testid="docs-button"
       >
         <BookIcon />
-      </Button>
-      <Button
-        btnStyle={"onWhite"}
-        btnType={"round"}
-        active={isEndpointsActive}
-        onClick={handleEndpointsClick}
-      >
-        <EndpointIcon />
       </Button>
     </div>
   );
