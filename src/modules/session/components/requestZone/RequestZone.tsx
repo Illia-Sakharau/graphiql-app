@@ -44,7 +44,7 @@ const RequestZone: FC = (): ReactElement => {
   }, [schema]);
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} data-testid="request-zone">
       <div className={classes.main}>
         <CodeArea schema={graphQLSchema} value={query} setValue={setValue} />
         <ToolsBar />

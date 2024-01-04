@@ -45,5 +45,8 @@ module.exports = {
       "pragma": "React",
       "version": "detect"
     }
+  },
+  globals: {
+    vi: true,
   }
 }

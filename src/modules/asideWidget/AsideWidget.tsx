@@ -21,7 +21,7 @@ const AsideWidget: FC = (): ReactElement => {
   };
 
   return (
-    <div className={classes.bar}>
+    <div className={classes.bar} data-testid="aside-widget">
       <Bar switchContent={switchContent} isContentOpen={isOpen} />
       {isOpen && (
         <ContentWrapper title={title} closeAside={closeAside}>
