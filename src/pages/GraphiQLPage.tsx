@@ -9,7 +9,7 @@ export const GraphiQLPage = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
   useEffect(() => {
-    if (!user) navigate(NavRoutes.loginPagePath);
+    if (!user) navigate(NavRoutes.mainPagePath);
   }, [user]);
 
   return <Playground />;
