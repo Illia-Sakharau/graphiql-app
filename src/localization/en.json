@@ -84,5 +84,25 @@
     "query": "Query"
   },
   "empty_body": "Enter data in playground/IDE to request",
-  "empty_url": "Enter url to request"
+  "empty_url": "Enter url to request",
+  "teammembers": {
+    "aliaksey": {
+      "name": "Aliaksei Hancharevich",
+      "position": "Developer",
+      "description":
+        "I am a Frontend Developer with a background in creating responsive and user-friendly web applications. Proficient in HTML, CSS, JavaScript and TypeScript, I specialize in modern frontend framework like React and Angular. My expertise includes designing visually appealing and performance web solutions, collaborating with teams, and adhering to UI/UX best practices. I am passionate about delivering seamless user experiences and ensuring cross-browser compatibility."
+    },
+    "max": {
+      "name": "Maksim Fil",
+      "position": "Developer",
+      "description":
+        "I was born in Donetsk on November 15, 1992. Graduated from Donetsk National Technical University🏫. I work as a chief engineer and programmer of CNC machines.🕵️‍♂️  I’ve been doing front-end development at RS School for a year now, it’s very interesting and addictive like a drug.  I also travel a lot and am not tied to my place of residence. Visited many countries. I love football⚽️. And I want to fly to Mars or the Moon.😉"
+    },
+    "illia": {
+      "name": "Illia Sakharau",
+      "position": "Developer",
+      "description":
+        "I am a Front-end developer with a unique background. After dedicating two years to working as a UI/UX designer, I discovered my passion for the technical aspects of web development. Motivated by this realization, I made a deliberate career shift towards Front-end development."
+    }
+  }
 }

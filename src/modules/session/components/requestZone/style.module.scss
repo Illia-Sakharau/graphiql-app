@@ -16,6 +16,7 @@
 
   & > *:first-child {
     flex-grow: 1;
+    max-width: calc(100% - 60px);
   }
 }
 
@@ -29,5 +30,9 @@
 
   .main {
     flex-direction: column-reverse;
+
+    & > *:first-child {
+      max-width: 100%;
+    }
   }
 }

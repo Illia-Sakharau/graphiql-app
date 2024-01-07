@@ -2,6 +2,9 @@
 
 .wrapper {
   padding: 16px;
+  max-width: 100%;
+  max-height: calc(100vh - 176px);
+  overflow-y: auto;
 
   & p {
     @include font-mono;
