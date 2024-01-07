@@ -22,6 +22,10 @@
   flex-grow: 1;
   padding: 16px;
   color: $color-white;
+  &:last-child {
+    max-height: calc(100vh - 224px);
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: $max-mobile) {
