@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FC, ReactElement } from "react";
-
 import { useLocalization } from "../../hooks/useLocalization";
 import SectionWrapper from "../../UI/sectionWrapper/SectionWrapper";
 import { MDeveloperCard } from "./components/developerCard/DeveloperCard";
@@ -21,7 +20,8 @@ const topAnimation = {
 };
 
 const TeamSection: FC = (): ReactElement => {
-  const dictionary = useLocalization().team_section;
+  const dictionary = useLocalization();
+  const { title, subtitle } = dictionary.team_section;
 
   return (
     <motion.section
@@ -32,15 +32,15 @@ const TeamSection: FC = (): ReactElement => {
     >
       <SectionWrapper className={classes[`team__wrapper`]}>
         <SectionHeader
-          title={dictionary.title}
-          subtitle={dictionary.subtitle}
+          title={title}
+          subtitle={subtitle}
         />
         <div className={classes.developers}>
-          {DEVELOPERS_INFO.map((developer, i) => (
+          {DEVELOPERS_INFO(dictionary).map((developer, i) => (
             <MDeveloperCard
               custom={i}
               variants={topAnimation}
-              key={developer.name}
+              key={i}
               {...developer}
             />
           ))}
